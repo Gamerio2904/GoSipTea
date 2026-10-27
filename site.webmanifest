@@ -1,0 +1,18 @@
+{
+  "name": "GoSipTea — Eco-Friendly Premium Loose-Leaf Tea",
+  "short_name": "GoSipTea",
+  "description": "Eco-friendly premium loose-leaf tea. Certified organic, single-origin, 100% compostable packaging.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#071009",
+  "theme_color": "#0a1712",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
