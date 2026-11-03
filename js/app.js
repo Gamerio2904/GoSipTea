@@ -42,6 +42,7 @@
   const els = {
     header: $(".site-header"),
     navToggle: $("#nav-toggle"),
+    themeToggle: $("#theme-toggle"),
     cartOpen: $("#cart-open"),
     cartClose: $("#cart-close"),
     cartBadge: $("#cart-badge"),
@@ -193,14 +194,62 @@
     toastTimer = setTimeout(() => els.toast.classList.remove("is-visible"), 2600);
   }
 
+  /* ---------------- light / dark theme toggle ---------------- */
+  /* data-theme is already set on <html> by the inline head script (no FOUC).
+     Here we only wire the toggle, sync A11y state + browser-tab color,
+     and persist the visitor's explicit choice (gosiptea_theme). */
+  const THEME_KEY = "gosiptea_theme";
+  const THEME_COLORS = { dark: "#0a1712", light: "#f6f1e6" };
+
+  const currentTheme = () =>
+    document.documentElement.getAttribute("data-theme") === "light" ? "light" : "dark";
+
+  function syncThemeUI(theme) {
+    if (!els.themeToggle) return;
+    els.themeToggle.setAttribute("aria-checked", String(theme === "dark"));
+    els.themeToggle.setAttribute("aria-label",
+      theme === "dark" ? "Dark mode on — switch to light mode" : "Light mode on — switch to dark mode");
+    const meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) meta.setAttribute("content", THEME_COLORS[theme]);
+  }
+
+  function setTheme(theme, persist) {
+    document.documentElement.setAttribute("data-theme", theme);
+    if (persist) {
+      try { localStorage.setItem(THEME_KEY, theme); } catch { /* storage blocked */ }
+    }
+    syncThemeUI(theme);
+  }
+
+  function initTheme() {
+    syncThemeUI(currentTheme());
+    if (!els.themeToggle) return;
+    els.themeToggle.addEventListener("click", () => {
+      setTheme(currentTheme() === "dark" ? "light" : "dark", true);
+    });
+    /* follow system changes only until the visitor picks a theme themselves */
+    const mq = window.matchMedia("(prefers-color-scheme: light)");
+    const onSystemChange = (e) => {
+      let stored = null;
+      try { stored = localStorage.getItem(THEME_KEY); } catch { /* ignore */ }
+      if (!stored) setTheme(e.matches ? "light" : "dark", false);
+    };
+    if (mq.addEventListener) mq.addEventListener("change", onSystemChange);
+    else if (mq.addListener) mq.addListener(onSystemChange); /* older Safari */
+  }
+
   /* ---------------- tea grid ---------------- */
   const FREE_SHIP = 50;
+  /* Signature range only — Winter Edition teas (collection: "christmas") live on
+     christmas/index.html but share the same cart & catalog. */
+  const SIGNATURE_COUNT = window.TEA_PRODUCTS.filter(p => p.collection !== "christmas").length;
 
   const state = { query: "", category: "all", caffeine: "all", taste: "all", sort: "featured" };
 
   function filteredProducts() {
     const q = state.query.trim().toLowerCase();
     let list = window.TEA_PRODUCTS.filter(p => {
+      if (p.collection === "christmas") return false;
       if (state.category !== "all" && p.category !== state.category) return false;
       if (state.caffeine !== "all" && p.caffeine !== state.caffeine) return false;
       if (state.taste !== "all" && !p.taste.includes(state.taste)) return false;
@@ -250,7 +299,7 @@
   function renderGrid() {
     const list = filteredProducts();
     els.grid.innerHTML = list.map(cardHTML).join("");
-    els.resultsCount.textContent = `Showing ${list.length} of ${window.TEA_PRODUCTS.length} teas`;
+    els.resultsCount.textContent = `Showing ${list.length} of ${SIGNATURE_COUNT} teas`;
     els.emptyState.hidden = list.length !== 0;
     els.resetFilters.hidden = !(state.query || state.category !== "all" || state.caffeine !== "all" || state.taste !== "all");
   }
@@ -652,6 +701,7 @@
 
   /* ---------------- boot ---------------- */
   function init() {
+    initTheme();
     renderGrid();
     updateBadge(false);
     renderDrawer();

@@ -277,6 +277,185 @@ const TEA_PRODUCTS = [
     image: "assets/img/teas/forest-ember-chai.jpg",
     metaTitle: "Forest Ember Chai — Spiced Masala Chai Black Tea | GoSipTea",
     metaDescription: "Assam black tea layered with Kerala cardamom, cinnamon, star anise and cacao nibs. Made for simmering, Fair Trade, $27. Winter edition."
+  },
+
+  /* ======================================================================
+     Winter Edition — festive showcase teas (German copy, internal mini-site
+     christmas/index.html). They share the same cart & catalog as the
+     signature range but are NOT rendered in the main collection grid
+     (see filteredProducts() in js/app.js).
+     ====================================================================== */
+  {
+    id: "goldener-bratapfel",
+    name: "Goldener Bratapfel",
+    collection: "christmas",
+    category: "herbal",
+    origin: "GoSipTea Manufaktur · Hamburg",
+    altitude: "Kleine Winterbatch · 400 Dosen",
+    price: 16,
+    size: "80 g · ca. 40 Tassen",
+    caffeine: "none",
+    taste: ["sweet", "fruity"],
+    notes: "Bratapfel, Zimtstange, Vanilleblüte, flüssiger Honig",
+    badge: "Festtags-Liebling",
+    rating: 4.9,
+    reviews: 128,
+    description:
+      "Wie der Duft des letzten Adventssonntags in einer Tasse: saftige Bratapfel-Stücke, " +
+      "Ceylon-Zimt und ein Hauch Bourbon-Vanille treffen auf sanfte Hibiskus-Wärme. " +
+      "Koffeinfrei, also beliebig spät – und zusammen mit einer Decke ohnehin unschlagbar. " +
+      "Familienrezept der Manufaktur, jeden Winter frisch komponiert.",
+    certifications: ["Bio-zertifiziert", "Kleine Batch", "Plastikfrei verpackt"],
+    brewing: {
+      temp: "95°C · 203°F",
+      time: "5–7 Min.",
+      dose: "3 g / 250 ml",
+      steps: [
+        "Wasser vollständig aufkochen lassen – Fruchttees mögen es heiß.",
+        "5 Minuten für den ersten Aufguss, 7 für volle Bratapfel-Tiefe.",
+        "Mit einer Scheibe Orange und einem Zimtstern servieren."
+      ]
+    },
+    image: "assets/img/xmas/goldener-bratapfel.jpg",
+    mood: ["cozy"]
+  },
+  {
+    id: "gluehglueck-orange-kardamom",
+    name: "Glühglück Orange & Kardamom",
+    collection: "christmas",
+    category: "green",
+    origin: "Uji · Japan & Nürnberger Gewürzhof",
+    altitude: "Herbstpflückung · schattige Gärten",
+    price: 18,
+    size: "70 g · ca. 35 Tassen",
+    caffeine: "low",
+    taste: ["spicy", "fruity"],
+    notes: "Süße Orange, grüner Kardamom, Nelke, goldener Glanz",
+    badge: "Limitiert",
+    rating: 4.8,
+    reviews: 96,
+    description:
+      "Glühwein-Feeling, ganz ohne Glühwein: sanfter Grüntee aus Uji, ummantelt von " +
+      "Sonnenorangen, grünem Kardamom und einer Spur Nelke. Der Duft füllt das ganze " +
+      "Wohnzimmer, der Geschmack bleibt fein und goldklar. Viel zu gut für den Weihnachtsmarkt – " +
+      "genau richtig für den Fenstersitz zu Hause.",
+    certifications: ["JAS Bio", "Direkthandel", "CO₂-neutraler Versand"],
+    brewing: {
+      temp: "75°C · 167°F",
+      time: "2 Min.",
+      dose: "3 g / 250 ml",
+      steps: [
+        "Wasser abkochen und kurz stehen lassen – Grüntee mag es sanft.",
+        "2 Minuten ziehen lassen – länger rückt die Orange zu weit nach vorn.",
+        "Ein feiner Zweig Rosmarin macht ihn zum festlichen Aperitif-Ersatz."
+      ]
+    },
+    image: "assets/img/xmas/gluehglueck-orange-kardamom.jpg",
+    mood: ["spicy"]
+  },
+  {
+    id: "spekulatius-stuendchen",
+    name: "Spekulatius-Stündchen",
+    collection: "christmas",
+    category: "black",
+    origin: "Ceylon Highlands · Sri Lanka",
+    altitude: "1.400 m Familienestate",
+    price: 17,
+    size: "80 g · ca. 40 Tassen",
+    caffeine: "medium",
+    taste: ["sweet", "spicy"],
+    notes: "Spekulatius, Zimt, geröstete Mandel, Karamell",
+    badge: "Nur im Winter",
+    rating: 4.9,
+    reviews: 147,
+    description:
+      "Das Stündchen zwischen Keksdose und Fernseher, jetzt flüssig: vollmundiger Ceylon- " +
+      "Schwarztee mit Spekulatius-Gewürzen, gerösteten Mandeln und einem Karamell-Finish, " +
+      "das samtig weich um die Kehle legt. Verträgt sich prächtig mit einem Schuss Hafermilch – " +
+      "und natürlich mit dem ersten echten Spekulatius daneben.",
+    certifications: ["Rainforest Alliance", "Bio-zertifiziert", "Plastikfrei verpackt"],
+    brewing: {
+      temp: "90°C · 194°F",
+      time: "3 Min.",
+      dose: "3 g / 250 ml",
+      steps: [
+        "Kurz unter dem Siedepunkt aufgießen – schützt die feinen Gewürznoten.",
+        "3 Minuten ziehen lassen, mit Milch wird er zum Dessert.",
+        "Am besten mit frischen Zimtsternen durchziehen – duftet doppelt so gut."
+      ]
+    },
+    image: "assets/img/xmas/spekulatius-stuendchen.jpg",
+    mood: ["cozy", "indulgent"]
+  },
+  {
+    id: "zimtstern-chai",
+    name: "Zimtstern-Chai",
+    collection: "christmas",
+    category: "special",
+    origin: "Kerala · Indien",
+    altitude: "Kardamomhügel",
+    price: 19,
+    size: "90 g · ca. 45 Tassen",
+    caffeine: "high",
+    taste: ["spicy", "sweet"],
+    notes: "Ceylon-Zimt, Kardamom, Sternanis, Kakaonuss",
+    badge: "Winter Edition",
+    rating: 4.8,
+    reviews: 118,
+    description:
+      "Unser kräftigster Winterbote: Assam-Schwarztee, geschichtet mit Ceylon-Zimt, " +
+      "Kardamom, Sternanis und einer Messerspitze Kakao – frisch gemahlen in winzigen " +
+      "Batches. Aufgekocht in Milch & Wasser wird daraus der wärmste Platz im Haus. " +
+      "Für alle, die ihren Advent gerne mit Pfeffer und Feuer würzen.",
+    certifications: ["Fair Trade", "Direkthandel", "Bio-zertifiziert"],
+    brewing: {
+      temp: "Simmer · 98°C",
+      time: "8 Min.",
+      dose: "4 g / 250 ml",
+      steps: [
+        "Tee und Gewürze 4 Minuten in Wasser köcheln – nicht hetzen.",
+        "Hafer- oder Vollmilch dazu, weitere 3 Minuten simmern.",
+        "Mit Honig süßen, abseihen und anbrennen lassen, was an Wärme bleibt."
+      ]
+    },
+    image: "assets/img/xmas/zimtstern-chai.jpg",
+    mood: ["spicy"]
+  },
+  {
+    id: "tee-adventskalender-2026",
+    name: "Tee-Adventskalender 2026",
+    collection: "christmas",
+    category: "special",
+    origin: "GoSipTea Manufaktur · Hamburg",
+    altitude: "Limitiert auf 500 Kalender",
+    price: 46,
+    size: "24 Türen · 24 Bio-Teeminen",
+    caffeine: "none",
+    taste: ["sweet", "floral"],
+    notes: "24 Überraschungen, Bio-Muster aller Gärten, Samtschachtel",
+    badge: "Wunschzettel-Hit",
+    rating: 5.0,
+    reviews: 87,
+    description:
+      "24 Türen. 24 Teemomente. Ein Kalender, der duftet wie der erste Adventsmorgen: " +
+      "hinter jeder Tür verbirgt sich eine handverlesene Bio-Teemine aus unseren " +
+      "Partnergärten – von Jade Whisper bis zum Spekulatius-Stündchen. Aus Kraft- " +
+      "pappe und Sojatinte, komplett kompostierbar. Und nach dem 24. Dezember? " +
+      "Bleibt die schönste Tür trotzdem offen – die zum nächsten Weihnachten.",
+    certifications: ["Bio-zertifiziert", "Kompostierbar", "Limitiert auf 500"],
+    brewing: {
+      temp: "Tür pro Tag",
+      time: "1.–24. Dezember",
+      dose: "24 × 2,5 g Proben",
+      steps: [
+        "Pro Tag eine Tür öffnen – oder laut Kalender-Regelbuch: alle auf einmal.",
+        "Jede Mine reicht für eine große Tasse oder eine kleine Auszeit.",
+        "Leere Türen in den Kompost, die Erinnerung bleibt im Tagebuch."
+      ]
+    },
+    image: "assets/img/xmas/advent.jpg",
+    mood: ["indulgent"],
+    isCalendar: true
   }
 ];
 
