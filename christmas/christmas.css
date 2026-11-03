@@ -154,83 +154,13 @@ html[data-page="xmas"][data-theme="light"] .mood-icon { background: rgba(176, 72
   50% { box-shadow: 0 0 0 9px rgba(198, 84, 74, .16); }
 }
 
-/* ---------- 6. Adventskalender ---------- */
-.advent-grid {
-  display: grid; gap: clamp(2.2rem, 5vw, 3.6rem);
-  grid-template-columns: 1fr; align-items: center;
-}
-.advent-copy > p:not(.advent-price):not(.advent-hint) { color: var(--ink-dim); margin-top: 1rem; }
-.advent-price { margin-top: 1.25rem; font-size: 1.02rem; color: var(--ink-dim); }
-.advent-price strong {
-  font-family: var(--font-display); font-size: 1.75rem;
-  color: var(--gold-soft); margin-right: .45rem;
-}
-.advent-price small { display: block; font-size: .78rem; color: var(--ink-faint); margin-top: .2rem; }
-.advent-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.1rem; margin-top: 1.5rem; }
-.advent-actions .link-btn { margin: 0; }
-.advent-hint { margin-top: 1.05rem; font-size: .8rem; font-style: italic; color: var(--ink-faint); }
-
-.advent-calendar { padding: 1.5rem; }
-.advent-head {
-  display: flex; justify-content: space-between; align-items: baseline; gap: 1rem;
-  margin-bottom: 1.05rem;
-}
-.advent-year { font-family: var(--font-display); font-size: 1.08rem; letter-spacing: .04em; }
-.advent-year strong { color: var(--gold-soft); }
-.advent-count { font-size: .78rem; color: var(--ink-faint); white-space: nowrap; }
-
-.advent-grid-doors {
-  display: grid; grid-template-columns: repeat(6, 1fr); gap: .55rem;
-  perspective: 1000px;
-}
-.door {
-  position: relative; aspect-ratio: 1 / 1;
-  background: none; border: 0; padding: 0; cursor: pointer;
-  -webkit-tap-highlight-color: transparent;
-}
-.door-inner {
-  position: absolute; inset: 0;
-  transform-style: preserve-3d;
-  transition: transform .7s var(--ease-out);
-}
-.door:not(.is-open):hover .door-inner { transform: rotateY(26deg); }
-.door.is-open .door-inner { transform: rotateY(180deg); }
-.door.is-open { cursor: default; }
-.door:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; border-radius: 12px; }
-
-.door-face {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column; align-items: center; justify-content: center;
-  gap: .12rem; padding: .3rem;
-  border-radius: 10px;
-  backface-visibility: hidden; -webkit-backface-visibility: hidden;
-  border: 1px solid var(--line-strong);
-  overflow: hidden;
-}
-.door-front {
-  background: linear-gradient(160deg, rgba(255, 255, 255, .06), rgba(0, 0, 0, .16));
-}
-.door:nth-child(3n) .door-front { border-color: rgba(198, 84, 74, .42); }
-.door:nth-child(3n + 2) .door-front { border-color: rgba(220, 187, 116, .38); }
-.door-num { font-family: var(--font-display); font-size: clamp(.95rem, 2.2vw, 1.25rem); color: var(--ink); line-height: 1; }
-.door-snow { width: 12px; height: 12px; color: var(--gold); opacity: .75; }
-.door-snow svg { width: 100%; height: 100%; }
-
-.door-back {
-  transform: rotateY(180deg);
-  background: var(--panel-bg);
-  border-color: rgba(198, 84, 74, .4);
-  text-align: center;
-}
-.door-kicker {
-  font-size: .48rem; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
-  color: var(--xred); line-height: 1.2;
-}
-.door-name { font-size: .6rem; font-weight: 600; line-height: 1.25; color: var(--ink); margin-top: .14rem; }
-.door-text { font-size: .5rem; line-height: 1.3; color: var(--ink-faint); margin-top: .12rem; }
-
-html[data-page="xmas"][data-theme="light"] .door-front {
-  background: linear-gradient(160deg, rgba(255, 255, 255, .75), rgba(34, 55, 43, .07));
+/* ---------- 6. Geschenke & Sets ---------- */
+.gift-grid { margin-top: .4rem; }
+.gift-grid .tea-card { border-color: rgba(220, 187, 116, .3); }
+.gift-grid .tea-card:hover { border-color: rgba(220, 187, 116, .55); }
+.gift-note {
+  margin-top: 2.4rem; text-align: center;
+  font-size: .84rem; color: var(--ink-faint); font-style: italic;
 }
 
 /* ---------- 7. Saison-Zitat ---------- */

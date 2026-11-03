@@ -532,6 +532,78 @@ const TEA_PRODUCTS = [
     image: "assets/img/xmas/advent.jpg",
     mood: ["indulgent"],
     isCalendar: true
+  },
+  {
+    id: "festtags-probierpaket",
+    name: "Festtags-Probierpaket",
+    collection: "christmas",
+    category: "special",
+    origin: "GoSipTea Manufaktur · Hamburg",
+    altitude: "Limitiert auf 300 Pakete",
+    price: 24,
+    size: "4 × 50 g Festtags-Tees",
+    caffeine: "medium",
+    taste: ["sweet", "spicy"],
+    notes: "Alle vier Festtags-Tees, Tee und Duftkerze, Geschenkkarte",
+    badge: "Zum Kennenlernen",
+    rating: 4.9,
+    reviews: 64,
+    description:
+      "Das Festtags-Probierpaket ist die perfekte Einladung in die GoSipTea Winteredition: " +
+      "alle vier limitierten Festtags-Tees – Goldener Bratapfel, Glühglück Orange & Kardamom, " +
+      "Spekulatius-Stündchen und Zimtstern-Chai – als je 50-g-Dose im festlichen Geschenkkarton. " +
+      "Ideal zum Verkosten, Verschenken und Baumschmücken. Eine Duftkerze und eine handsignierte " +
+      "Geschenkkarte liegen bei – mehr Weihnachten passt nicht in einen Karton.",
+    certifications: ["Bio-zertifiziert", "Kompostierbar", "Limitiert auf 300"],
+    brewing: {
+      temp: "75–100 °C je Sorte",
+      time: "2–6 Min. je Sorte",
+      dose: "1 TL pro Tasse",
+      steps: [
+        "Jede Dose trägt ihr eigenes Brüh-Ritual auf dem Deckel.",
+        "Empfehlung: pro Adventswoche einen der vier Tees verkosten.",
+        "Notiere deinen Favoriten – im nächsten Jahr gibt's ihn als Großdose."
+      ]
+    },
+    image: "assets/img/xmas/festtags-probierpaket.jpg",
+    mood: ["cozy", "indulgent"],
+    isGift: true
+  },
+  {
+    id: "winter-tee-set",
+    name: "Winter-Tee-Set",
+    collection: "christmas",
+    category: "special",
+    origin: "GoSipTea Manufaktur · Hamburg",
+    altitude: "Steinzeug & Bio-Tee im Geschenkkarton",
+    price: 39,
+    size: "Kanne + 2 Tassen + 2 Tees",
+    caffeine: "none",
+    taste: ["sweet", "floral"],
+    notes: "Handgemachtes Steinzeug, Kanne 0,9 l, 2 Bio-Teewahlen",
+    badge: "Geschenk-Klassiker",
+    rating: 4.9,
+    reviews: 112,
+    description:
+      "Das Winter-Tee-Set bringt das GoSipTea Atelier an deinen Esstisch: eine handgemachte " +
+      "Steinzeug-Kanne (0,9 l) mit zwei passenden Tassen im matten Schwarzgrün, dazu zwei " +
+      "frei wählbare Bio-Tees aus der Winteredition – fertig gebunden im Geschenkkarton aus " +
+      "Recycling-Pappe. Für zwei, für Feiertage, für alle, die Tee zelebrieren statt " +
+      "kürzen. Spülmaschinenfest und ein Leben lang schön.",
+    certifications: ["Handgemachtes Steinzeug", "Bio-zertifiziert", "Recycling-Karton"],
+    brewing: {
+      temp: "Spülmaschinenfest",
+      time: "Kanne 0,9 l",
+      dose: "2 Teewahlen inklusive",
+      steps: [
+        "Kanne mit heißem Wasser vorwärmen, dann loose leaf einfüllen.",
+        "Eine Tasse für dich, eine für die Person, die mit dir schweigt oder quatscht.",
+        "Falls doch eine dritte Person kommt: Nachfüll-Dosen gibt's immer."
+      ]
+    },
+    image: "assets/img/xmas/winter-tee-set.jpg",
+    mood: ["cozy", "indulgent"],
+    isGift: true
   }
 ];
 

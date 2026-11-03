@@ -21,8 +21,8 @@
   <meta property="og:title" content="GoSipTea — Eco-Friendly Premium Loose-Leaf Tea">
   <meta property="og:description" content="Hand-picked at origin, blended in small batches, shipped in 100% compostable packaging. Steeped in nature. Sipped in style.">
   <meta property="og:image" content="https://gamerio2904.github.io/GoSipTea/assets/img/hero.jpg">
-  <meta property="og:image:width" content="1440">
-  <meta property="og:image:height" content="720">
+  <meta property="og:image:width" content="1344">
+  <meta property="og:image:height" content="768">
   <meta property="og:image:alt" content="Misty emerald tea plantation at dawn — GoSipTea organic tea gardens">
   <meta property="og:locale" content="en_US">
 
@@ -77,9 +77,7 @@
     "description": "GoSipTea crafts eco-friendly premium loose-leaf tea from certified organic, single-origin gardens in 100% compostable packaging.",
     "email": "hello@gosiptea.com",
     "sameAs": [
-      "https://www.instagram.com/gosiptea",
-      "https://www.pinterest.com/gosiptea",
-      "https://www.youtube.com/@gosiptea"
+      "https://www.instagram.com/gosiptea.hhn"
     ]
   }
   </script>
@@ -91,6 +89,36 @@
     "@type": "WebSite",
     "name": "GoSipTea",
     "url": "https://gamerio2904.github.io/GoSipTea/"
+  }
+  </script>
+
+  <!-- ============ STRUCTURED DATA: FAQ ============ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Is GoSipTea a real shop?",
+        "acceptedAnswer": { "@type": "Answer", "text": "GoSipTea is a showcase brand experience. The cart, wishlist and checkout are fully interactive demos — nothing is ordered, charged or shipped. Think of it as our concept store." }
+      },
+      {
+        "@type": "Question",
+        "name": "How do I brew loose-leaf tea properly?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Use soft, freshly boiled water and one teaspoon of leaves per cup. Green teas steep at 75–85°C for 2–3 minutes, black teas at 95–100°C for 3–4 minutes, herbal infusions at 100°C for 5–6 minutes. Every GoSipTea tin carries its own brewing ritual on the lid." }
+      },
+      {
+        "@type": "Question",
+        "name": "What makes GoSipTea packaging sustainable?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Every tin and shipping box is 100% plastic-free and compostable — unbleached kraft paper, a plant-based lining and soy ink printing. Even the tea-Advent-Calendar doors go into the compost, not the bin." }
+      },
+      {
+        "@type": "Question",
+        "name": "Where do the teas come from?",
+        "acceptedAnswer": { "@type": "Answer", "text": "From certified-organic, single-origin partner gardens in Japan, China, Sri Lanka, India, Egypt and South Africa. We buy via direct trade at around twice the common farmgate price, and every origin is listed on its product page." }
+      }
+    ]
   }
   </script>
 
@@ -227,7 +255,7 @@
     <div class="promo-bar">
       <p class="promo-bar-inner">
         <span aria-hidden="true">❄</span>
-        <span><strong>Winter Edition now live</strong> — four limited festive teas &amp; the Tea Advent Calendar.</span>
+        <span><strong>Winter Edition now live</strong> — four limited festive teas, the Tea Advent Calendar &amp; gift sets.</span>
         <a href="christmas/index.html">Discover
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
       </p>
@@ -296,6 +324,10 @@
           <img src="assets/img/hero.jpg" alt="" fetchpriority="high" decoding="async">
           <div class="cup-veil"></div>
         </div>
+
+        <!-- WebGL layer: true 3D cup + GPU steam (js/hero3d.js).
+             The SVG cup below stays as the graceful no-WebGL / reduced-motion fallback. -->
+        <canvas id="gl-hero" class="gl-hero" aria-hidden="true"></canvas>
 
         <!-- ambient floating leaves -->
         <span class="cup-leaf" style="top:22%;left:12%;--leaf-dur:13s" aria-hidden="true">
@@ -790,6 +822,54 @@
         </div>
       </div>
     </section>
+    <!-- ================================================== -->
+    <!-- FAQ                                                 -->
+    <!-- ================================================== -->
+    <section class="section faq" id="faq" aria-labelledby="faq-title">
+      <div class="container faq-wrap">
+        <header class="section-head center" data-reveal>
+          <p class="eyebrow">Good to Know</p>
+          <h2 class="section-title" id="faq-title">Steeped in <em>Answers.</em></h2>
+        </header>
+
+        <div class="faq-list" data-reveal>
+          <details class="faq-item">
+            <summary>Is GoSipTea a real shop?</summary>
+            <p>
+              GoSipTea is a showcase brand experience. The cart, wishlist and checkout are
+              fully interactive demos — nothing is ordered, charged or shipped. Think of it
+              as our concept store: everything works, nothing costs a cent.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>How do I brew loose-leaf tea properly?</summary>
+            <p>
+              Soft, freshly boiled water and one teaspoon of leaves per cup. Green teas steep
+              at 75–85&nbsp;°C for 2–3 minutes, black teas at 95–100&nbsp;°C for 3–4 minutes,
+              herbal infusions at 100&nbsp;°C for 5–6 minutes. Every GoSipTea tin carries its
+              own brewing ritual right on the lid.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>What makes GoSipTea packaging sustainable?</summary>
+            <p>
+              Every tin and shipping box is 100&nbsp;% plastic-free and compostable —
+              unbleached kraft paper, a plant-based lining and soy ink printing. Even the
+              Tea-Advent-Calendar doors go into the compost, not the bin.
+            </p>
+          </details>
+          <details class="faq-item">
+            <summary>Where do the teas come from?</summary>
+            <p>
+              From certified-organic, single-origin partner gardens in Japan, China, Sri Lanka,
+              India, Egypt and South Africa. We buy via direct trade at around twice the common
+              farmgate price — and every origin is listed transparently on its product page.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <!-- ================================================== -->
@@ -837,9 +917,7 @@
       <div class="footer-col" aria-label="Social media">
         <h3>Follow the Garden</h3>
         <ul class="social-row">
-          <li><a href="https://www.instagram.com/gosiptea" aria-label="GoSipTea on Instagram" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a></li>
-          <li><a href="https://www.pinterest.com/gosiptea" aria-label="GoSipTea on Pinterest" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7c-2.5 0-4 1.7-4 3.6 0 1.2.6 2.2 1.5 2.6l.5-1.6c-.3-.4-.5-.8-.5-1.2 0-1.3 1-2.4 2.6-2.4 1.4 0 2.4.9 2.4 2.2 0 1.7-.8 3.2-2 3.2-.7 0-1.2-.5-1-1.2l.5-2"/><path d="m11 13-1.2 4.6"/></svg></a></li>
-          <li><a href="https://www.youtube.com/@gosiptea" aria-label="GoSipTea on YouTube" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"><rect x="2.5" y="6" width="19" height="12" rx="4"/><path d="M10.5 9.8v4.4l4-2.2-4-2.2Z" fill="currentColor" stroke="none"/></svg></a></li>
+          <li><a href="https://www.instagram.com/gosiptea.hhn" aria-label="GoSipTea on Instagram — @gosiptea.hhn" rel="noopener" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1.1" fill="currentColor" stroke="none"/></svg></a></li>
         </ul>
       </div>
     </div>
@@ -989,5 +1067,10 @@
   <script src="js/showcase.js"></script>
   <script src="js/tea-finder.js"></script>
   <script src="js/hero.js"></script>
+  <script src="js/vibe.js"></script>
+  <script type="importmap">
+  { "imports": { "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js" } }
+  </script>
+  <script type="module" src="js/hero3d.js"></script>
 </body>
 </html>

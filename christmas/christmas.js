@@ -2,7 +2,7 @@
    GoSipTea — Winter Edition (christmas/index.html)
    Festliche Stimmungsseite: Fake-Warenkorb (gemeinsam mit der Hauptseite),
    weihnachtlicher Fake-Checkout mit Erfolgsmeldungen, interaktiver
-   Adventskalender, Schneefall, Konfetti und Light/Dark-Toggle.
+   Geschenke & Sets, Schneefall, Konfetti und Light/Dark-Toggle.
    Abhängigkeiten: ../js/products.js (Daten) → ../js/cart.js (Cart) → hier.
    Keine Zahlungen, keine Netzwerk-Aufrufe – alles bleibt im Browser.
    ========================================================================== */
@@ -79,9 +79,7 @@
     okOrder: $("#ok-order"),
     okMessage: $("#ok-message"),
     okSummary: $("#ok-summary"),
-    adventGrid: $("#advent-grid"),
-    adventCount: $("#advent-opened-count"),
-    adventReset: $("#advent-reset"),
+    giftGrid: $("#gift-grid"),
     toast: $("#toast")
   };
 
@@ -183,7 +181,11 @@
   }
 
   /* ---------------- Festtags-Grid ---------------- */
-  const XMAS_TEAS = window.TEA_PRODUCTS.filter(p => p.collection === "christmas" && !p.isCalendar);
+  const XMAS_TEAS = window.TEA_PRODUCTS.filter(p => p.collection === "christmas" && !p.isCalendar && !p.isGift);
+  const XMAS_GIFTS = window.TEA_PRODUCTS.filter(p => p.collection === "christmas" && (p.isGift || p.isCalendar));
+
+  /* Produktbilder liegen im Root-assets-Ordner — von /christmas/ aus mit ../ auflösen */
+  const src = (p) => (!p.image || p.image.startsWith("http") || p.image.startsWith("../")) ? p.image : "../" + p.image;
 
   function cardHTML(p) {
     return `
@@ -191,7 +193,7 @@
         <article class="tea-card" data-id="${p.id}" data-mood="${(p.mood || []).join(" ")}" tabindex="0" role="button"
                  aria-label="Details zu ${escapeHTML(p.name)} ansehen">
           <div class="tea-media">
-            <img src="${p.image}" alt="${escapeHTML(p.name)} – ${escapeHTML(CAT_DE[p.category] || p.category)} aus ${escapeHTML(p.origin)}"
+            <img src="${src(p)}" alt="${escapeHTML(p.name)} – ${escapeHTML(CAT_DE[p.category] || p.category)} aus ${escapeHTML(p.origin)}"
                  loading="lazy" decoding="async">
             ${p.badge ? `<span class="tea-badge">${escapeHTML(p.badge)}</span>` : ""}
             <span class="tea-caf caf-${p.caffeine}"><i class="caf-dot"></i>${escapeHTML(CAF_DE[p.caffeine] || p.caffeine)}</span>
@@ -218,13 +220,18 @@
     els.count.textContent = `${XMAS_TEAS.length} limitierte Festtags-Tees · Nachtisch fürs Herz, Frühstück für die Seele`;
   }
 
+  function renderGifts() {
+    if (!els.giftGrid) return;
+    els.giftGrid.innerHTML = XMAS_GIFTS.map(cardHTML).join("");
+  }
+
   /* ---------------- Produkt-Modal (deutsch) ---------------- */
   let currentProduct = null;
 
   function productModalHTML(p) {
     return `
       <div class="pm-media">
-        <img src="${p.image}" alt="${escapeHTML(p.name)} – ${escapeHTML(CAT_DE[p.category] || p.category)}">
+        <img src="${src(p)}" alt="${escapeHTML(p.name)} – ${escapeHTML(CAT_DE[p.category] || p.category)}">
       </div>
       <div class="pm-info">
         <div class="pm-kicker">
@@ -288,7 +295,7 @@
     if (!p) return "";
     return `
       <li class="cart-line" data-id="${p.id}">
-        <img class="cart-line-img" src="${p.image}" alt="">
+        <img class="cart-line-img" src="${src(p)}" alt="">
         <div>
           <p class="cart-line-name">${escapeHTML(p.name)}</p>
           <p class="cart-line-meta">${fmt(p.price)} · ${escapeHTML(p.size)}</p>
@@ -519,89 +526,6 @@
     requestAnimationFrame(frame);
   }
 
-  /* ---------------- Adventskalender ---------------- */
-  const ADVENT_KEY = "gosiptea_advent_v1";
-  const ADVENT = [
-    { k: "Tee",   n: "Jade Whisper",                 d: "Der Klassiker unterm Baum." },
-    { k: "Notiz", n: "Decke, Kerze, Velvet Earl Grey.", d: "Mehr braucht der Montag nicht." },
-    { k: "Tee",   n: "Golden Sunrise Assam",         d: "Morgenkraft für lange Dezembermorgen." },
-    { k: "Notiz", n: "Geschenkidee Nr. 1",           d: "Der Adventskalender selbst. Sehr meta, oder?" },
-    { k: "Tee",   n: "Moonlight Chamomile",          d: "Ruhe für alle, die viel schenken." },
-    { k: "Notiz", n: "Wusstest du?",                 d: "Zimt zählt zu den ältesten Gewürzen der Welt." },
-    { k: "Tee",   n: "Crimson Rooibos",              d: "Rubinrot wie die Christkugeln." },
-    { k: "Notiz", n: "Auftrag des Tages",            d: "Drei tiefe Atemzüge beim Teekochen." },
-    { k: "Tee",   n: "Velvet Earl Grey",             d: "Bergamotte unterm Sternenhimmel." },
-    { k: "Notiz", n: "Brühtipp",                     d: "Orangenschalen nur ziehen – nie mitkochen." },
-    { k: "Tee",   n: "Midnight Oolong",              d: "Der stille Star der Winterabende." },
-    { k: "Notiz", n: "Halbzeit!",                    d: "Belohnung: ein zweiter Keks. Oder drei." },
-    { k: "Tee",   n: "Emerald Matcha",               d: "Grün wie der Tannenbaum." },
-    { k: "Notiz", n: "Heute bitte",                  d: "Anrufen statt schreiben. Mit Tee." },
-    { k: "Tee",   n: "Spekulatius-Stündchen",        d: "Kekse in der Dose, Gewürze in der Tasse." },
-    { k: "Notiz", n: "Verschenk-Tipp",               d: "Teedosen lieben Geschenkpapier." },
-    { k: "Tee",   n: "Forest Ember Chai",            d: "Kaminfeuer zum Aufgießen." },
-    { k: "Notiz", n: "Karaoke-Advent",               d: "Ein Lied laut mitsingen. Tee hilft." },
-    { k: "Tee",   n: "Glühglück Orange & Kardamom",  d: "Glühwein-Gefühl, ganz ohne Glühwein." },
-    { k: "Notiz", n: "Sonntagsformel",               d: "Fensterbank + Kerze + Jade Whisper." },
-    { k: "Tee",   n: "Goldener Bratapfel",           d: "Duftet wie der letzte Adventssonntag." },
-    { k: "Notiz", n: "Heute wichtig",                d: "Danke sagen. An jemanden, der es verdient hat." },
-    { k: "Tee",   n: "Zimtstern-Chai",               d: "Der Stern über deinem Teeglas." },
-    { k: "Notiz", n: "Heiligabend",                  d: "Alles, was zählt, ist in der Tasse – und um dich herum." }
-  ];
-
-  function loadOpened() {
-    try {
-      const arr = JSON.parse(localStorage.getItem(ADVENT_KEY) || "[]");
-      return Array.isArray(arr) ? arr.filter(n => Number.isInteger(n) && n >= 1 && n <= 24) : [];
-    } catch { return []; }
-  }
-
-  function saveOpened(list) {
-    try { localStorage.setItem(ADVENT_KEY, JSON.stringify(list)); } catch { /* egal */ }
-  }
-
-  function renderAdvent() {
-    const opened = loadOpened();
-    els.adventGrid.innerHTML = ADVENT.map((item, i) => {
-      const day = i + 1;
-      const isOpen = opened.includes(day);
-      return `
-        <button class="door${isOpen ? " is-open" : ""}" data-day="${day}"
-                aria-pressed="${isOpen}" aria-label="Türchen ${day} – ${isOpen ? "geöffnet: " + escapeHTML(item.n) : "öffnen"}">
-          <span class="door-inner">
-            <span class="door-face door-front" aria-hidden="true">
-              <span class="door-num">${day}</span>
-              <span class="door-snow">${ICONS.snow}</span>
-            </span>
-            <span class="door-face door-back" aria-hidden="true">
-              <span class="door-kicker">Türchen ${day} · ${escapeHTML(item.k)}</span>
-              <span class="door-name">${escapeHTML(item.n)}</span>
-              <span class="door-text">${escapeHTML(item.d)}</span>
-            </span>
-          </span>
-        </button>`;
-    }).join("");
-    els.adventCount.textContent = `${opened.length} / 24 geöffnet`;
-  }
-
-  function onDoorClick(e) {
-    const door = e.target.closest(".door");
-    if (!door || door.classList.contains("is-open")) return;
-    const day = parseInt(door.dataset.day, 10);
-    const item = ADVENT[day - 1];
-    door.classList.add("is-open");
-    door.setAttribute("aria-pressed", "true");
-    door.setAttribute("aria-label", `Türchen ${day} – geöffnet: ${item.n}`);
-    const opened = loadOpened();
-    if (!opened.includes(day)) { opened.push(day); saveOpened(opened); }
-    els.adventCount.textContent = `${opened.length} / 24 geöffnet`;
-  }
-
-  function resetAdvent() {
-    saveOpened([]);
-    renderAdvent();
-    toast("Alle Türchen wieder zu – 24 neue Überraschungen warten");
-  }
-
   /* ---------------- Geschenk-Stimmungen → Karten pulsieren ---------------- */
   function goToMood(mood) {
     const target = $("#festtags");
@@ -652,7 +576,7 @@
       }
     });
 
-    /* Wunschzettel-Buttons außerhalb des Grids (z. B. Adventskalender-Teaser) */
+    /* Wunschzettel-Buttons außerhalb des Grids (z. B. Geschenk-Sektion) */
     document.addEventListener("click", e => {
       const addBtn = e.target.closest("[data-add]");
       if (!addBtn || els.grid.contains(addBtn)) return;
@@ -721,9 +645,6 @@
       }
     });
 
-    /* Adventskalender */
-    els.adventGrid.addEventListener("click", onDoorClick);
-    els.adventReset.addEventListener("click", resetAdvent);
 
     /* Stimmungen */
     $$(".mood-card[data-mood-link]").forEach(card =>
@@ -754,7 +675,7 @@
   function init() {
     initTheme();
     renderGrid();
-    renderAdvent();
+    renderGifts();
     updateBadge(false);
     renderDrawer();
     wireEvents();

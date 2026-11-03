@@ -13,12 +13,14 @@ sensitive keys — everything runs in the browser and deploys to **GitHub Pages*
 | Area | Details |
 |------|---------|
 | **Design** | Dark forest/obsidian palette (signature default) **+ warm ivory light mode**, bronze-gold accents, glassmorphism, Playfair Display + Inter, micro-interactions, entrance animations, mobile-first responsive |
+| **3D Cup Hero** | WebGL-Layer (three.js via CDN, `js/hero3d.js`): echter 3D-Keramik-Cup mit Goldrand + GPU-Steam-Partikel, Maus-Parallax, Scroll-Choreografie — der Dampf löst sich synchron zum „GoSipTea"-Lettering-Morph auf. Fallback ohne WebGL / bei reduzierter Bewegung: das ursprüngliche SVG-Cup-Hero |
+| **Vibe Layer** | `js/vibe.js`: Pointer-3D-Tilt auf Produkt-/Persona-/Mood-Karten + magnetische Primär-CTAs (nur Desktop-Hover, `prefers-reduced-motion` respektiert) |
 | **Light / Dark Mode** | Sun/moon **slide toggle top-left** in the header; choice persisted in `localStorage` (`gosiptea_theme`), first visit follows the system preference, dark remains the default for fresh visitors; browser-tab color synced via `theme-color` |
 | **Tea Explorer** | Live search, category chips (Green / Black / Herbal / Special Editions), caffeine + taste filters, sorting, animated results counter |
 | **Product Detail** | Modal with origin, altitude, eco-certifications, tasting notes, brewing ritual (temp / time / dose / steps), quantity stepper |
 | **Cart** | Persistent via `localStorage` (`gosiptea_cart_v1`), slide-over drawer, quantity steppers, remove, subtotal, free-shipping progress bar (>$50) |
 | **Mock Checkout** | Dummy shipping form with client-side validation → order summary → showcase confirmation: *"GoSipTea is currently a showcase brand! Thank you for exploring."* No payments, nothing leaves the browser |
-| **SEO** | Semantic HTML5, Open Graph + Twitter Cards, JSON-LD (`Organization`, `WebSite`, `ItemList` of `Product` with offers & ratings), canonical URL, dynamic `<title>`/meta per product (`?tea=slug` deep links) |
+| **SEO** | Semantic HTML5, Open Graph + Twitter Cards, JSON-LD (`Organization` inkl. Instagram-`sameAs`, `WebSite`, `FAQPage`, `ItemList` of `Product` with offers & ratings), canonical URL, `robots.txt`, `sitemap.xml`, dynamic `<title>`/meta per product (`?tea=slug` deep links) |
 | **A11y** | Skip link, ARIA labels/roles, focus management, Escape-to-close, `prefers-reduced-motion` support, keyboard-operable cards |
 
 ## 🎄 Winter Edition (christmas/)
@@ -32,9 +34,9 @@ eigene festliche Palette (Tannennacht / Schneetag, weiches Rot, Kerzengold):
 | **Festtags-Kollektion** | 4 limitierte Tees: **Goldener Bratapfel**, **Glühglück Orange & Kardamom**, **Spekulatius-Stündchen**, **Zimtstern-Chai** — eigene Bilder, deutsche Detail-Modals mit Brühritual |
 | **Fake-Warenkorb** | Geteilt mit der Hauptseite (gleiches `localStorage`)! Weihnachts- **und** Signatur-Tees landen im selben Wunschzettel — Drawer, Badge, Mengensteuerung, Gratis-Versand-Balken |
 | **Fake-Checkout** | Spielerisch ohne Formular: „Dem Weihnachtsmann übergeben" → weihnachtliche Erfolgsmeldung (u. a. *"Frohes Fest! Dieser Warenkorb bringt direkt den Weihnachtsmann ins Haus – rein digital!"*), Konfetti, Bestell-ID `GSP-XMAS-…` |
+| **Geschenke & Sets** | Zum Verkauf: **Tee-Adventskalender 2026**, **Festtags-Probierpaket** (4 × 50 g) und **Winter-Tee-Set** (Steinzeug-Kanne + 2 Tassen + 2 Tees) — eigene Bilder, gleiche Karten/Modals wie die Tees. (Der interaktive 24-Türchen-Kalender wurde als Feature entfernt — der Kalender ist jetzt ein Produkt.) |
 | **Schwebendes Widget** | Goldener Wunschzettel-Button unten rechts (Badge-Sync mit Header) |
-| **Adventskalender** | 24 interaktive Türchen (3D-Flip, Tee-Momente & Mini-Notizen), Zustand wird in `localStorage` (`gosiptea_advent_v1`) gemerkt, zurücksetzbar |
-| **Extra** | Geschenk-Stimmungen (Gemütlich / Genießer / Würzig) pulsen passende Karten an, saisonales Zitat-Band |
+| **Extra** | Geschenk-Stimmungen (Gemütlich / Genießer / Würzig) pulsen passende Karten an, saisonales Zitat-Band, Instagram-Verlinkung (@gosiptea.hhn) im Footer + JSON-LD |
 | **A11y/SEO** | Gleiche Grundlagen wie Hauptseite; Seite ist bewusst `noindex` (interne Kampagne — Zeile in `christmas/index.html` entfernen, wenn sie gefunden werden darf) |
 
 **Keine echten Verkäufe:** Beide Seiten sind reine Showcase-Erlebnisse. Es gibt keine
@@ -45,20 +47,27 @@ ein Wunschzettel, der Checkout ein Wintermärchen.
 
 ```
 gosiptea/
-├── index.html          # Hauptseite + alle SEO-Metadaten & JSON-LD
+├── index.html          # Hauptseite + alle SEO-Metadaten & JSON-LD (Org/WebSite/FAQ/ItemList)
 ├── 404.html            # Branded 404 (GitHub Pages serves it automatically)
+├── robots.txt          # + sitemap.xml (Homepage)
 ├── site.webmanifest    # PWA manifest (colors, icon)
 ├── .nojekyll           # Bypasses Jekyll processing on GitHub Pages
 ├── css/
-│   └── styles.css      # Design system (tokens → components → light mode → responsive)
+│   ├── styles.css      # Design system (tokens → components → light mode → responsive)
+│   └── home.css        # Yogi-Rework: Cup-Hero (SVG + WebGL-Layer), Showcase, Finder, Personas
 ├── js/
-│   ├── products.js     # 🍃 Tea catalog — single source of truth (signature + christmas)
+│   ├── products.js     # 🍃 Tea catalog — single source of truth (signature + christmas + gifts)
 │   ├── cart.js         # localStorage cart module — SHARED by both pages
-│   └── app.js          # Rendering, filters, modals, drawer, checkout, dynamic SEO
+│   ├── app.js          # Rendering, filters, modals, drawer, checkout, dynamic SEO
+│   ├── hero.js         # Scroll-Morph: Steam → „GoSipTea"-Lettering → Content-Settle
+│   ├── hero3d.js       # three.js WebGL-Cup + Steam-Partikel (ES module via importmap)
+│   ├── showcase.js     # „The Edit"-Karussell + Kategorien-Tiles
+│   ├── tea-finder.js   # 3-Fragen-Geschmacks-Quiz → Persona-Picks
+│   └── vibe.js         # 3D-Tilt-Karten + magnetische CTAs
 ├── christmas/          # 🎄 Winter Edition (deutsche Kampagnenseite)
-│   ├── index.html      # Hero, Festtags-Kollektion, Adventskalender, Zitat
-│   ├── christmas.css   # Festliche Token-Overrides + Türen/Lichterkette/FAB
-│   └── christmas.js    # Grid, geteilter Warenkorb, Fake-Checkout, Schnee, Konfetti
+│   ├── index.html      # Hero, Festtags-Kollektion, Geschenke & Sets, Zitat
+│   ├── christmas.css   # Festliche Token-Overrides + Lichterkette/FAB
+│   └── christmas.js    # Grids, geteilter Warenkorb, Fake-Checkout, Schnee, Konfetti
 └── assets/
     ├── favicon.svg     # Hand-crafted tea-leaf mark
     └── img/            # hero.jpg, story.jpg, packaging.jpg, teas/*.jpg, xmas/*.jpg

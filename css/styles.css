@@ -1203,3 +1203,28 @@ html[data-theme="light"] .check-list li::before {
 }
 
 :focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 4px; }
+
+/* ================================================== */
+/* 18. FAQ                                             */
+/* ================================================== */
+.faq-wrap { max-width: 840px; }
+.faq-list { display: grid; gap: .95rem; margin-top: 2.4rem; text-align: left; }
+.faq-item {
+  border: 1px solid var(--line); border-radius: 18px;
+  background: var(--panel-bg); padding: 1.15rem 1.45rem;
+  transition: border-color .3s ease, background-color .3s ease;
+}
+.faq-item[open] { border-color: var(--line-strong); background: var(--glass); }
+.faq-item summary {
+  cursor: pointer; list-style: none;
+  display: flex; justify-content: space-between; align-items: center; gap: 1rem;
+  font-family: var(--font-display); font-weight: 600; font-size: 1.06rem; color: var(--ink);
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after {
+  content: "+"; font-size: 1.45rem; line-height: 1; color: var(--gold);
+  transition: transform .3s var(--ease-out);
+  flex: 0 0 auto;
+}
+.faq-item[open] summary::after { transform: rotate(45deg); }
+.faq-item p { margin-top: .85rem; color: var(--ink-dim); line-height: 1.7; }
