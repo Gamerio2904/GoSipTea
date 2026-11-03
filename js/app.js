@@ -711,6 +711,12 @@
     /* deep link: ?tea=slug opens the product modal directly */
     const tea = new URLSearchParams(location.search).get("tea");
     if (tea && byId(tea)) setTimeout(() => openProduct(tea), 350);
+
+    /* tiny bridge for home-only widgets (tea finder quiz, persona & showcase cards)
+       — keeps app.js private APIs reusable without duplicating logic */
+    window.GoSipOpen = openProduct;
+    window.GoSipCard = cardHTML;
+    window.GoSipToast = toast;
   }
 
   if (document.readyState === "loading") {

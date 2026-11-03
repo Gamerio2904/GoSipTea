@@ -344,6 +344,21 @@
     "Moment, ein echter Shop? Nein – nur ein Wintermärchen. Dein Warenkorb bleibt Wunschzettel: guten Durst und frohe Festtage!"
   ];
 
+  /* Fake-Warenkorb: JEDER Add löst einen Fun-Spruch aus (Anforderung: "nur Fun-Benachrichtigung").
+     Der erste Add im Lauf zeigt exakt den Beispielspruch, danach wechselnde Varianten. */
+  const XMAS_ADD_MESSAGES = [
+    "Frohes Fest! Dieser Warenkorb bringt direkt den Weihnachtsmann ins Haus – rein digital!",
+    "Ho ho ho! Zimt-Dampf im Korb – bleibt trotzdem rein digital, versprochen!",
+    "Schneeflocke-Guarantee: Dein Wunschzettel duftet jetzt nach Bratapfel. Oops – immer noch kein echter Shop!",
+    "Die Elfen haben klingeln gehört – dein Korb wächst (nur digital, natürlich)!"
+  ];
+  let addMsgCounter = 0;
+  function nextAddMsg(name) {
+    const msg = XMAS_ADD_MESSAGES[addMsgCounter % XMAS_ADD_MESSAGES.length];
+    addMsgCounter += 1;
+    return addMsgCounter === 1 ? msg : (name ? `${name}: ` : "") + msg;
+  }
+
   const shippingFor = (subtotal) => subtotal >= FREE_SHIP ? 0 : 4.9;
 
   function openCheckout() {
@@ -624,6 +639,7 @@
         addBtn.classList.add("added");
         addBtn.innerHTML = ICONS.check;
         setTimeout(() => { addBtn.classList.remove("added"); addBtn.innerHTML = ICONS.plus; }, 900);
+        toast(nextAddMsg());
         return;
       }
       const card = e.target.closest(".tea-card");
@@ -643,7 +659,7 @@
       const p = byId(addBtn.dataset.add);
       if (!p) return;
       Cart.add(p.id);
-      toast(`${p.name} liegt auf deinem Wunschzettel`);
+      toast(nextAddMsg(p.name));
     });
 
     /* Produkt-Modal */
@@ -657,7 +673,7 @@
       if (e.target.closest("#pm-add")) {
         const qty = parseInt($("#pm-qty").textContent, 10) || 1;
         Cart.add(currentProduct.id, qty);
-        toast(`${currentProduct.name} × ${qty} liegt auf deinem Wunschzettel`);
+        toast(nextAddMsg());
         closeProduct();
       }
     });

@@ -6,6 +6,82 @@
    ========================================================================== */
 
 const TEA_PRODUCTS = [
+  /* ------------------------------------------------------------------
+     Persona Picks — curated for our community personas (marketing
+     blueprint): Mia Weber (fruity, balanced aroma, medium intensity,
+     fair price, zero-fail tastings) and Jonas Lindner (classic, mild
+     black tea, credible organic & Fairtrade, honest price-quality).
+     ------------------------------------------------------------------ */
+  {
+    id: "berry-balance",
+    name: "Berry Balance",
+    category: "herbal",
+    persona: "mia",
+    origin: "GoSipTea Atelier · Hamburg",
+    altitude: "Hibiscus from Aswan · berries from Ceylon",
+    price: 19,
+    size: "80 g · ~40 cups",
+    caffeine: "none",
+    taste: ["fruity", "sweet"],
+    notes: "Blackberry, elderberry, baked apple, gentle hibiscus lift",
+    badge: "Persona Pick",
+    rating: 4.8,
+    reviews: 156,
+    description:
+      "Blended for balanced afternoons: sun-ripened berries and soft baked apple over " +
+      "a naturally gentle hibiscus base — fruity, yet never too sharp or too sweet. " +
+      "Medium intensity that steeps forgivingly: three minutes or seven, the cup stays " +
+      "smooth. The easy way to try something new without risking a bad surprise.",
+    certifications: ["USDA Organic", "Fair Trade", "Plastic-Free Packaging"],
+    brewing: {
+      temp: "100°C · 212°F",
+      time: "5–7 min",
+      dose: "3 g / 250 ml",
+      steps: [
+        "Fruit teas love fully boiled water.",
+        "5 minutes for bright berry notes, 7 for deeper apple warmth.",
+        "Never turns bitter — re-steep the leaves once more if you like."
+      ]
+    },
+    image: "assets/img/teas/berry-balance.jpg",
+    metaTitle: "Berry Balance — Fruity Organic Berry Fruit Tea | GoSipTea",
+    metaDescription: "Balanced berry fruit tea with blackberry, elderberry and baked apple. Medium intensity, never bitter, USDA Organic. 80 g loose leaf, $19."
+  },
+  {
+    id: "golden-harmony",
+    name: "Golden Harmony",
+    category: "black",
+    persona: "jonas",
+    origin: "Dimbula Highlands · Sri Lanka",
+    altitude: "1,300 m single estate",
+    price: 24,
+    size: "75 g · ~38 cups",
+    caffeine: "medium",
+    taste: ["sweet", "robust"],
+    notes: "Soft malt, clover honey, warm biscuit, whisper of caramel",
+    badge: "Persona Pick",
+    rating: 4.9,
+    reviews: 178,
+    description:
+      "A classic black tea for everyday rituals: high-grown Dimbula leaves, gently " +
+      "oxidized for a full yet mellow aroma with notably little bitterness. Honey-smooth " +
+      "plain, wonderful with a splash of oat milk. Verified organic & Fairtrade from a " +
+      "single family estate — honest quality at a price that keeps its promises.",
+    certifications: ["USDA Organic", "Fair Trade", "Rainforest Alliance"],
+    brewing: {
+      temp: "95°C · 203°F",
+      time: "3 min",
+      dose: "3 g / 250 ml",
+      steps: [
+        "Freshly boiled water with a brief rest — gentle on the leaves.",
+        "Steep 3 minutes; the cup stays smooth without tannic bite.",
+        "Enjoy plain, or with oat milk and a spoon of honey."
+      ]
+    },
+    image: "assets/img/teas/golden-harmony.jpg",
+    metaTitle: "Golden Harmony — Mild Organic Classic Black Tea | GoSipTea",
+    metaDescription: "Mellow classic black tea from Dimbula, Sri Lanka. Soft malt and honey with little bitterness, USDA Organic & Fairtrade. 75 g loose leaf, $24."
+  },
   {
     id: "jade-whisper",
     name: "Jade Whisper",

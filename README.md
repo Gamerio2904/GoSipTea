@@ -150,3 +150,38 @@ Edit **`js/products.js`** — each tea is one self-documenting object:
 - Tea reviews/ratings are illustrative showcase content.
 - Replace `assets/img/*` with real product photography for production use.
 - Die Winter Edition ist deutschsprachig (interne Kampagne); die Hauptseite bleibt englisch.
+
+## 🍵 Stage: Yogi-Style Rework (2026-11-03, Design-Upgrade, Inhalt unverändert)
+
+Design-Neuausrichtung der Hauptseite nach der warmen/natürlichen Yogi-Ästhetik
+(große Naturkulisse, Serifen-Headlines, viel Weißraum, weiche Scroll-Choreografie)
+— **alle Inhalte, Produkte, Filter, Warenkorb- und Theme-Logik bleiben identisch.**
+
+Neu/geändert:
+- **Cup-Hero (`#cup-hero`, `js/hero.js`, `css/home.css`):** Die Landingpage IST eine
+  dampfende Teetasse über Tea-Terrassen. Beim Scrollen materialisiert sich aus dem
+  Dampf Buchstabe für Buchstabe das Wortmark "GoSipTea" und wird zur Website:
+  Tagline, CTAs und Trust-Badges setzen sich (Sticky-Stage, CSS-Var `--p` 0→1,
+  Klassen `is-content`/`is-settle`). `prefers-reduced-motion`: statischer, voll
+  lesbarer Hero ohne Pinning.
+- **Showcase "The Edit" (`js/showcase.js`):** horizontaler Produkt-Carousel startet
+  mit den beiden Persona-Picks; Kategorie-Tiles (Green/Black/Herbal/Special) setzen
+  die bestehenden Filter-Chips.
+- **Tea Finder (`js/tea-finder.js`, `#tea-finder`):** 3-Fragen-Geschmacksquiz
+  (Blueprint: "Landingpage-Abfrage") — Mia-Pfad → **Berry Balance**, Jonas-Pfad →
+  **Golden Harmony**. Rein clientseitig, keine Daten.
+- **Personas (`#personas`):** Mia Weber & Jonas Lindner aus dem Marketing-Blueprint
+  (siehe upload/) mit Zitaten, Motiven und Picks.
+- **Neue Sorten (`js/products.js`):** `berry-balance` (Mia: fruchtig, mittel,
+  fair, nie bitter) + `golden-harmony` (Jonas: klassisch-mild, Bio & Fairtrade,
+  ehrliches P/L) inkl. eigener Produktfotos `assets/img/teas/`.
+- **Cart-Bridge (`js/app.js`):** `window.GoSipOpen/GoSipCard/GoSipToast` — Quiz- und
+  Persona-Karten außerhalb des Grids nutzen denselben Warenkorb/Modal.
+- **Winter Edition:** Jeder Fake-Add löst jetzt einen Fun-Spruch aus — der erste
+  exakt: "Frohes Fest! Dieser Warenkorb bringt direkt den Weihnachtsmann ins Haus
+  – rein digital!" (weiterhin rein digital, kein echter Checkout).
+
+QA (agent-browser, 2026-11-03): 0 Console-Errors (beide Seiten), Hero p=1 →
+8/8 Buchstaben + Content-Settle, Finder Mia-Pfad → Berry Balance, Cart-Bridge
+(add/count/subtotal), Theme-Toggle & Persistenz, Mobile 390px, Christmas
+Add-Spruch verbatim verifiziert.
