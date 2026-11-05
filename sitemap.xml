@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://gamerio2904.github.io/GoSipTea/</loc>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
-  </url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>1.0</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/sortiment.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.9</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/fruechtetee.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/schwarztee.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/produkt.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/ueber-uns.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/nachhaltigkeit.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/sip-talk.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/service.html</loc><lastmod>2026-11-06</lastmod><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/christmas/index.html</loc><lastmod>2026-11-06</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/impressum.html</loc><lastmod>2026-11-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/agb.html</loc><lastmod>2026-11-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
+  <url><loc>https://gamerio2904.github.io/GoSipTea/datenschutz.html</loc><lastmod>2026-11-06</lastmod><changefreq>yearly</changefreq><priority>0.3</priority></url>
 </urlset>

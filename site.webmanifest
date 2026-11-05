@@ -1,18 +1,13 @@
 {
-  "name": "GoSipTea — Eco-Friendly Premium Loose-Leaf Tea",
+  "name": "GoSipTea – Tee, der verbindet (Demo)",
   "short_name": "GoSipTea",
-  "description": "Eco-friendly premium loose-leaf tea. Certified organic, single-origin, 100% compostable packaging.",
-  "start_url": "./",
-  "scope": "./",
-  "display": "standalone",
-  "background_color": "#071009",
-  "theme_color": "#0a1712",
+  "description": "Moderne Teemarke: hochwertiger Tee aus biologischem Anbau und gemeinsame Teemomente. Studentisches Demo-Projekt.",
+  "start_url": "./index.html",
+  "display": "browser",
+  "background_color": "#faf6ef",
+  "theme_color": "#3e5c45",
+  "lang": "de",
   "icons": [
-    {
-      "src": "assets/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
-      "purpose": "any"
-    }
+    { "src": "assets/img/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
   ]
 }
