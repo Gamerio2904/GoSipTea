@@ -29,10 +29,14 @@
       ? '<span class="p-card__badge' + (p.badge === "Neu" ? " p-card__badge--accent" : "") + '">' + p.badge + "</span>"
       : "";
     var tags = p.tastes.map(function (t) { return '<span class="tag">' + t + "</span>"; }).join("");
+    var imgAlt = p.img2
+      ? '<img class="p-card__img p-card__img--alt" src="' + imgPrefix + p.img2 + '" alt="' + p.name + " – zweite Ansicht" + '" loading="lazy" width="880" height="880">'
+      : "";
     return (
       '<article class="p-card' + (opts.reveal ? " reveal" : "") + '">' +
       '<a class="p-card__media" href="' + href + '" aria-label="' + p.name + ' ansehen">' +
-      '<img src="' + imgPrefix + p.img + '" alt="' + p.name + " – " + (cat ? cat.name : "Tee") + '" loading="lazy" width="880" height="880">' +
+      '<img class="p-card__img" src="' + imgPrefix + p.img + '" alt="' + p.name + " – " + (cat ? cat.name : "Tee") + '" loading="lazy" width="880" height="880">' +
+      imgAlt +
       badge +
       "</a>" +
       '<div class="p-card__body">' +
@@ -72,9 +76,9 @@
   var state = { cat: "", tastes: [], intensity: "", price: "", q: "" };
 
   function priceMatch(p) {
-    if (state.price === "a") return p.price <= 18;
-    if (state.price === "b") return p.price > 18 && p.price <= 25;
-    if (state.price === "c") return p.price > 25;
+    if (state.price === "a") return p.price <= 6;
+    if (state.price === "b") return p.price > 6 && p.price <= 9;
+    if (state.price === "c") return p.price > 9;
     return true;
   }
 
@@ -108,6 +112,11 @@
     if (params.get("cat")) state.cat = params.get("cat");
     if (params.get("geschmack")) state.tastes = [params.get("geschmack")];
     if (params.get("intensitaet")) state.intensity = params.get("intensitaet");
+    if (params.get("q")) {
+      state.q = params.get("q");
+      var sIn = document.getElementById("filter-search");
+      if (sIn) sIn.value = state.q;
+    }
 
     bar.addEventListener("click", function (e) {
       var chip = e.target.closest(".chip");
@@ -127,6 +136,7 @@
 
     bar.addEventListener("change", function (e) {
       var t = e.target;
+      if (t.id === "filter-cat") state.cat = t.value;
       if (t.id === "filter-intensity") state.intensity = t.value;
       if (t.id === "filter-price") state.price = t.value;
       applyFilters();
@@ -145,6 +155,7 @@
       reset.addEventListener("click", function () {
         state = { cat: "", tastes: [], intensity: "", price: "", q: "" };
         bar.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("is-active"); });
+        var i0 = document.getElementById("filter-cat"); if (i0) i0.value = "";
         var i1 = document.getElementById("filter-intensity"); if (i1) i1.value = "";
         var i2 = document.getElementById("filter-price"); if (i2) i2.value = "";
         var i3 = document.getElementById("filter-search"); if (i3) i3.value = "";
@@ -152,11 +163,9 @@
       });
     }
 
-    /* Vorauswahl aus URL markieren */
-    if (state.cat) {
-      var chip = bar.querySelector('.chip[data-kind="cat"][data-val="' + state.cat + '"]');
-      if (chip) chip.classList.add("is-active");
-    }
+    /* Vorauswahl aus URL übernehmen */
+    var catSel = document.getElementById("filter-cat");
+    if (catSel && state.cat) catSel.value = state.cat;
     state.tastes.forEach(function (t) {
       var chip = bar.querySelector('.chip[data-kind="taste"][data-val="' + t + '"]');
       if (chip) chip.classList.add("is-active");
@@ -190,11 +199,32 @@
       if (li.length >= 3) li[2].innerHTML = '<span aria-current="page">' + p.name + "</span>";
     }
 
-    /* Bild + Info */
+    /* Bild + Info + zweite Ansicht */
     var img = document.getElementById("detail-img");
     if (img) {
       img.src = p.img;
       img.alt = p.name + " – " + (cat ? cat.name : "Tee");
+    }
+    var thumbs = document.getElementById("detail-thumbs");
+    if (thumbs) {
+      var tA = thumbs.querySelector(".detail-thumb--a img");
+      var tB = thumbs.querySelector(".detail-thumb--b");
+      if (tA) tA.src = p.img;
+      if (tB) {
+        if (p.img2) {
+          tB.hidden = false;
+          tB.querySelector("img").src = p.img2;
+        } else {
+          tB.hidden = true;
+        }
+      }
+      thumbs.addEventListener("click", function (e) {
+        var btn = e.target.closest(".detail-thumb");
+        if (!btn || !img) return;
+        var src = btn.querySelector("img").getAttribute("src");
+        if (src) img.src = src;
+        thumbs.querySelectorAll(".detail-thumb").forEach(function (b) { b.classList.toggle("is-active", b === btn); });
+      });
     }
     var badge = document.getElementById("detail-badge");
     if (badge) {
@@ -243,7 +273,7 @@
       var relItems = GOSIP.productsByCat(p.cat).filter(function (x) { return x.id !== p.id; }).slice(0, 4);
       if (relItems.length < 3) {
         GOSIP.products.forEach(function (x) {
-          if (relItems.length < 4 && x.id !== p.id && relItems.indexOf(x) === -1 && x.persona) relItems.push(x);
+          if (relItems.length < 4 && x.id !== p.id && relItems.indexOf(x) === -1 && x.badge === "Bestseller") relItems.push(x);
         });
       }
       rel.innerHTML = relItems.slice(0, 4).map(function (x) { return buildCard(x, { reveal: true }); }).join("");

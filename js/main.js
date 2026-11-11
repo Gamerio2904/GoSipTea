@@ -57,6 +57,68 @@
     });
   }
 
+  /* ---------- Kopfzeilen-Suche --------------------------------------------- */
+  function initSearch() {
+    var wrap = document.getElementById("hdr-search");
+    if (!wrap) return;
+    var btn = wrap.querySelector("#search-toggle");
+    var input = wrap.querySelector("input[name='q']");
+    function set(open) {
+      wrap.classList.toggle("is-open", open);
+      if (btn) btn.setAttribute("aria-expanded", open ? "true" : "false");
+      if (open && input) input.focus();
+    }
+    if (btn) btn.addEventListener("click", function () { set(!wrap.classList.contains("is-open")); });
+    document.addEventListener("click", function (e) {
+      if (wrap.classList.contains("is-open") && !e.target.closest("#hdr-search")) set(false);
+    });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && wrap.classList.contains("is-open")) set(false);
+    });
+  }
+
+  /* ---------- Dropdown-Navigation (Klick + Tastatur) ----------------------- */
+  function initDropdowns() {
+    document.querySelectorAll(".nav__item--sub > .nav__parent").forEach(function (btn) {
+      btn.addEventListener("click", function (e) {
+        e.preventDefault();
+        var item = btn.parentElement;
+        var open = item.classList.toggle("is-open");
+        btn.setAttribute("aria-expanded", open ? "true" : "false");
+        document.querySelectorAll(".nav__item--sub.is-open").forEach(function (o) {
+          if (o !== item) {
+            o.classList.remove("is-open");
+            var b = o.querySelector(".nav__parent");
+            if (b) b.setAttribute("aria-expanded", "false");
+          }
+        });
+      });
+    });
+    document.addEventListener("click", function (e) {
+      if (!e.target.closest(".nav__item--sub")) {
+        document.querySelectorAll(".nav__item--sub.is-open").forEach(function (o) {
+          o.classList.remove("is-open");
+          var b = o.querySelector(".nav__parent");
+          if (b) b.setAttribute("aria-expanded", "false");
+        });
+      }
+    });
+  }
+
+  /* ---------- Nach-oben-Button --------------------------------------------- */
+  function initToTop() {
+    var btn = document.getElementById("to-top");
+    if (!btn) return;
+    var onScroll = function () {
+      btn.classList.toggle("is-visible", window.scrollY > 480);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    btn.addEventListener("click", function () {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  }
+
   /* ---------- Reveal-Animationen ------------------------------------------- */
   function observeReveals(root) {
     var els = (root || document).querySelectorAll(".reveal:not(.is-in)");
@@ -126,6 +188,9 @@
     initTheme();
     initHeader();
     initMobileNav();
+    initSearch();
+    initDropdowns();
+    initToTop();
     initAccordions();
     initNewsletter();
     observeReveals(document);

@@ -4,6 +4,7 @@
    Warenkorb und Tea-Finder.
    Hinweis: Fiktives studentisches Projekt — Preise, Produkte und
    Zertifizierungen sind Beispieldaten ohne realen Anspruch.
+   Preissystem: studentenfreundlich, Tees ab 4,50 €.
    ========================================================================== */
 
 const GOSIP = {
@@ -17,6 +18,7 @@ const GOSIP = {
       tagline: "Sonnenreife Früchte – fruchtig, sanft, ohne Koffein",
       desc: "Fruchtige Kompositionen aus Beeren, Apfel und Hibiskus. Der unkomplizierte Genuss für den ganzen Tag – verzeiht jede Ziehzeit.",
       img: "assets/img/teas/berry-balance.jpg",
+      img2: "assets/img/teas2/berry-balance.jpg",
       landing: "fruechtetee.html"
     },
     {
@@ -25,6 +27,7 @@ const GOSIP = {
       tagline: "Blüten, Kräuter & eine Tasse Ruhe",
       desc: "Kamille, Rooibos und frische Minze: koffeinfreie Kräuterkompositionen für ruhige Momente und den Abend.",
       img: "assets/img/teas/moonlight-chamomile.jpg",
+      img2: "assets/img/teas2/moonlight-chamomile.jpg",
       landing: ""
     },
     {
@@ -33,6 +36,7 @@ const GOSIP = {
       tagline: "Klassiker mit Charakter & mildem Finale",
       desc: "Assam, Earl Grey und weiche Kompositionen: klassische Schwarztees mit vollmundigem Aroma und glaubwürdiger Herkunft.",
       img: "assets/img/teas/golden-harmony.jpg",
+      img2: "assets/img/teas2/golden-harmony.jpg",
       landing: "schwarztee.html"
     },
     {
@@ -41,6 +45,7 @@ const GOSIP = {
       tagline: "Frisch, klar & vegetal",
       desc: "Sanft gedämpfte und panasenröstige Grüntees – von grasig-frischem Sencha bis blumigem Jade-Tee.",
       img: "assets/img/teas/jade-whisper.jpg",
+      img2: "assets/img/teas2/jade-whisper.jpg",
       landing: ""
     },
     {
@@ -49,6 +54,7 @@ const GOSIP = {
       tagline: "Warme Würze, goldene Momente",
       desc: "Zimt, Kardamom und Nelke: würzige Chai-Kompositionen – pur oder mit Milch und Honig geköchelt.",
       img: "assets/img/teas/forest-ember-chai.jpg",
+      img2: "assets/img/teas2/forest-ember-chai.jpg",
       landing: ""
     },
     {
@@ -57,6 +63,16 @@ const GOSIP = {
       tagline: "Oolong & Matcha für Entdecker",
       desc: "Handgerollte Oolongs und Steinmühle-Matcha: besondere Tees für alle, die tiefer eintauchen möchten.",
       img: "assets/img/teas/midnight-oolong.jpg",
+      img2: "assets/img/teas2/midnight-oolong.jpg",
+      landing: ""
+    },
+    {
+      id: "specials",
+      name: "Specials",
+      tagline: "Saisonale Editionen – jetzt: Winter",
+      desc: "Unsere saisonalen Sondereditionen: Im Winter würzige Festtagstees – je nach Saison auch Halloween- oder Silvester-Editionen.",
+      img: "assets/img/xmas/goldener-bratapfel.jpg",
+      img2: "assets/img/teas2/goldener-bratapfel.jpg",
       landing: ""
     },
     {
@@ -65,6 +81,7 @@ const GOSIP = {
       tagline: "Zum Kennenlernen & Verschenken",
       desc: "Vom Festtags-Probierpaket bis zum Tee-Adventskalender: sorgfältig zusammengestellte Sets für gemeinsame Teemomente.",
       img: "assets/img/new/geschenkset.jpg",
+      img2: "assets/img/xmas/festtags-probierpaket.jpg",
       landing: ""
     }
   ],
@@ -78,7 +95,7 @@ const GOSIP = {
       id: "berry-balance",
       name: "Berry Balance",
       cat: "fruechtetee",
-      price: 19,
+      price: 5.9,
       size: "80 g · ca. 40 Tassen",
       caffeine: "none",
       intensity: 2,
@@ -90,14 +107,15 @@ const GOSIP = {
       origin: "Komposition aus dem GoSipTea Atelier · Hibiskus aus Ägypten, Beeren aus Ceylon",
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: "mia",
-      badge: "Persona-Pick",
-      img: "assets/img/teas/berry-balance.jpg"
+      badge: "Bestseller",
+      img: "assets/img/teas/berry-balance.jpg",
+      img2: "assets/img/teas2/berry-balance.jpg"
     },
     {
       id: "berry-sunset",
       name: "Berry Sunset",
       cat: "fruechtetee",
-      price: 15,
+      price: 4.9,
       size: "100 g · ca. 50 Tassen",
       caffeine: "none",
       intensity: 1,
@@ -110,13 +128,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/new/berry-sunset.jpg"
+      img: "assets/img/new/berry-sunset.jpg",
+      img2: "assets/img/teas2/berry-sunset.jpg"
     },
     {
       id: "goldener-bratapfel",
       name: "Goldener Bratapfel",
-      cat: "fruechtetee",
-      price: 16,
+      cat: "specials",
+      price: 5.5,
       size: "80 g · ca. 40 Tassen",
       caffeine: "none",
       intensity: 1,
@@ -129,7 +148,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/goldener-bratapfel.jpg"
+      img: "assets/img/xmas/goldener-bratapfel.jpg",
+      img2: "assets/img/teas2/goldener-bratapfel.jpg"
     },
 
     /* --- Kräutertee ---------------------------------------------------- */
@@ -137,7 +157,7 @@ const GOSIP = {
       id: "moonlight-chamomile",
       name: "Moonlight Chamomile",
       cat: "kraeutertee",
-      price: 19,
+      price: 5.9,
       size: "60 g · ca. 30 Tassen",
       caffeine: "none",
       intensity: 1,
@@ -150,13 +170,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/moonlight-chamomile.jpg"
+      img: "assets/img/teas/moonlight-chamomile.jpg",
+      img2: "assets/img/teas2/moonlight-chamomile.jpg"
     },
     {
       id: "mint-meadow",
       name: "Mint Meadow",
       cat: "kraeutertee",
-      price: 14,
+      price: 4.5,
       size: "80 g · ca. 45 Tassen",
       caffeine: "none",
       intensity: 1,
@@ -169,13 +190,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: "Neu",
-      img: "assets/img/new/mint-meadow.jpg"
+      img: "assets/img/new/mint-meadow.jpg",
+      img2: "assets/img/teas2/mint-meadow.jpg"
     },
     {
       id: "crimson-rooibos",
       name: "Crimson Rooibos",
       cat: "kraeutertee",
-      price: 21,
+      price: 6.5,
       size: "80 g · ca. 40 Tassen",
       caffeine: "none",
       intensity: 2,
@@ -188,7 +210,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Fairtrade-Handel"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/crimson-rooibos.jpg"
+      img: "assets/img/teas/crimson-rooibos.jpg",
+      img2: "assets/img/teas2/crimson-rooibos.jpg"
     },
 
     /* --- Schwarztee ---------------------------------------------------- */
@@ -196,7 +219,7 @@ const GOSIP = {
       id: "golden-harmony",
       name: "Golden Harmony",
       cat: "schwarztee",
-      price: 24,
+      price: 6.9,
       size: "75 g · ca. 38 Tassen",
       caffeine: "medium",
       intensity: 2,
@@ -208,14 +231,15 @@ const GOSIP = {
       origin: "Assam-Tal & Ceylon-Hochland, veredelt im GoSipTea Atelier",
       cert: ["Bio-Anbau", "Fairtrade-Handel"],
       persona: "jonas",
-      badge: "Persona-Pick",
-      img: "assets/img/teas/golden-harmony.jpg"
+      badge: "Bestseller",
+      img: "assets/img/teas/golden-harmony.jpg",
+      img2: "assets/img/teas2/golden-harmony.jpg"
     },
     {
       id: "golden-sunrise",
       name: "Golden Sunrise Assam",
       cat: "schwarztee",
-      price: 22,
+      price: 6.5,
       size: "80 g · ca. 40 Tassen",
       caffeine: "high",
       intensity: 3,
@@ -228,13 +252,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Fairtrade-Handel"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/golden-sunrise.jpg"
+      img: "assets/img/teas/golden-sunrise.jpg",
+      img2: "assets/img/teas2/golden-sunrise.jpg"
     },
     {
       id: "velvet-earl-grey",
       name: "Velvet Earl Grey",
       cat: "schwarztee",
-      price: 24,
+      price: 6.9,
       size: "75 g · ca. 38 Tassen",
       caffeine: "medium",
       intensity: 2,
@@ -247,13 +272,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/velvet-earl-grey.jpg"
+      img: "assets/img/teas/velvet-earl-grey.jpg",
+      img2: "assets/img/teas2/velvet-earl-grey.jpg"
     },
     {
       id: "spekulatius-stuendchen",
       name: "Spekulatius-Stündchen",
-      cat: "schwarztee",
-      price: 17,
+      cat: "specials",
+      price: 5.9,
       size: "80 g · ca. 40 Tassen",
       caffeine: "medium",
       intensity: 2,
@@ -266,7 +292,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/spekulatius-stuendchen.jpg"
+      img: "assets/img/xmas/spekulatius-stuendchen.jpg",
+      img2: "assets/img/teas2/spekulatius-stuendchen.jpg"
     },
 
     /* --- Grüntee -------------------------------------------------------- */
@@ -274,7 +301,7 @@ const GOSIP = {
       id: "jade-whisper",
       name: "Jade Whisper",
       cat: "gruentee",
-      price: 26,
+      price: 7.5,
       size: "70 g · ca. 35 Tassen",
       caffeine: "low",
       intensity: 2,
@@ -287,13 +314,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/jade-whisper.jpg"
+      img: "assets/img/teas/jade-whisper.jpg",
+      img2: "assets/img/teas2/jade-whisper.jpg"
     },
     {
       id: "morgenlicht-sencha",
       name: "Morgenlicht Sencha",
       cat: "gruentee",
-      price: 20,
+      price: 6.5,
       size: "80 g · ca. 40 Tassen",
       caffeine: "low",
       intensity: 2,
@@ -306,13 +334,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: "Neu",
-      img: "assets/img/new/morgenlicht-sencha.jpg"
+      img: "assets/img/new/morgenlicht-sencha.jpg",
+      img2: "assets/img/teas2/morgenlicht-sencha.jpg"
     },
     {
       id: "gluehglueck-orange-kardamom",
       name: "Glühglück Orange & Kardamom",
-      cat: "gruentee",
-      price: 18,
+      cat: "specials",
+      price: 5.9,
       size: "70 g · ca. 35 Tassen",
       caffeine: "low",
       intensity: 2,
@@ -325,7 +354,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/gluehglueck-orange-kardamom.jpg"
+      img: "assets/img/xmas/gluehglueck-orange-kardamom.jpg",
+      img2: "assets/img/teas2/gluehglueck-orange-kardamom.jpg"
     },
 
     /* --- Gewürztee & Chai ------------------------------------------------ */
@@ -333,7 +363,7 @@ const GOSIP = {
       id: "forest-ember-chai",
       name: "Forest Ember Chai",
       cat: "chai",
-      price: 27,
+      price: 7.9,
       size: "90 g · ca. 45 Tassen",
       caffeine: "high",
       intensity: 3,
@@ -345,14 +375,15 @@ const GOSIP = {
       origin: "Assam-Basis, Gewürze aus Kerala, Indien",
       cert: ["Bio-Anbau", "Fairtrade-Handel"],
       persona: null,
-      badge: null,
-      img: "assets/img/teas/forest-ember-chai.jpg"
+      badge: "Bestseller",
+      img: "assets/img/teas/forest-ember-chai.jpg",
+      img2: "assets/img/teas2/forest-ember-chai.jpg"
     },
     {
       id: "zimtstern-chai",
       name: "Zimtstern-Chai",
-      cat: "chai",
-      price: 19,
+      cat: "specials",
+      price: 6.9,
       size: "90 g · ca. 45 Tassen",
       caffeine: "high",
       intensity: 3,
@@ -365,7 +396,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/zimtstern-chai.jpg"
+      img: "assets/img/xmas/zimtstern-chai.jpg",
+      img2: "assets/img/teas2/zimtstern-chai.jpg"
     },
 
     /* --- Tee-Spezialitäten ------------------------------------------------ */
@@ -373,7 +405,7 @@ const GOSIP = {
       id: "midnight-oolong",
       name: "Midnight Oolong",
       cat: "spezialitaeten",
-      price: 30,
+      price: 9.9,
       size: "60 g Dose · ca. 30 Tassen",
       caffeine: "medium",
       intensity: 3,
@@ -386,13 +418,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/midnight-oolong.jpg"
+      img: "assets/img/teas/midnight-oolong.jpg",
+      img2: "assets/img/teas2/midnight-oolong.jpg"
     },
     {
       id: "emerald-matcha",
       name: "Emerald Matcha Reserve",
       cat: "spezialitaeten",
-      price: 38,
+      price: 12.9,
       size: "30 g Dose · ca. 15 Schalen",
       caffeine: "high",
       intensity: 3,
@@ -405,7 +438,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/teas/emerald-matcha.jpg"
+      img: "assets/img/teas/emerald-matcha.jpg",
+      img2: "assets/img/teas2/emerald-matcha.jpg"
     },
 
     /* --- Probierpakete & Geschenksets -------------------------------------- */
@@ -413,7 +447,7 @@ const GOSIP = {
       id: "tee-adventskalender-2026",
       name: "Tee-Adventskalender 2026",
       cat: "sets",
-      price: 69,
+      price: 49.9,
       size: "24 Probierpakete + Tee-Set",
       caffeine: "none",
       intensity: 2,
@@ -426,13 +460,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: "Winter Edition",
-      img: "assets/img/xmas/advent.jpg"
+      img: "assets/img/xmas/advent.jpg",
+      img2: "assets/img/teas2/tee-adventskalender-2026.jpg"
     },
     {
       id: "festtags-probierpaket",
       name: "Festtags-Probierpaket",
       cat: "sets",
-      price: 24,
+      price: 19.9,
       size: "4 × 50 g Festtags-Tees",
       caffeine: "medium",
       intensity: 2,
@@ -445,13 +480,14 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/festtags-probierpaket.jpg"
+      img: "assets/img/xmas/festtags-probierpaket.jpg",
+      img2: "assets/img/teas2/festtags-probierpaket.jpg"
     },
     {
       id: "winter-tee-set",
       name: "Winter-Tee-Set",
       cat: "sets",
-      price: 39,
+      price: 29.9,
       size: "Kanne + 2 Tassen + 2 Tees",
       caffeine: "none",
       intensity: 1,
@@ -464,7 +500,8 @@ const GOSIP = {
       cert: ["Bio-Anbau", "Plastikfreie Verpackung"],
       persona: null,
       badge: null,
-      img: "assets/img/xmas/winter-tee-set.jpg"
+      img: "assets/img/xmas/winter-tee-set.jpg",
+      img2: "assets/img/teas2/winter-tee-set.jpg"
     }
   ]
 };
@@ -497,9 +534,9 @@ GOSIP.intensityLabel = function (n) {
   return { 1: "sanft", 2: "mittel", 3: "intensiv" }[n] || "";
 };
 
-/* EUR-Preis formatieren */
+/* EUR-Preis formatieren (immer 2 Nachkommastellen bei Komma-Preisen) */
 GOSIP.eur = function (n) {
-  return n.toLocaleString("de-DE", { minimumFractionDigits: 0, maximumFractionDigits: 2 }) + " €";
+  return n.toLocaleString("de-DE", { minimumFractionDigits: n % 1 ? 2 : 0, maximumFractionDigits: 2 }) + " €";
 };
 
 /* Explizit global verfügbar machen (const erzeugt keine window-Eigenschaft) */

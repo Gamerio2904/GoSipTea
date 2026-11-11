@@ -25,7 +25,8 @@
       opts: [
         { val: "morgen", label: "Morgens – wach werden" },
         { val: "nachmittag", label: "Nachmittags – kleine Pause" },
-        { val: "abend", label: "Abends – runterkommen" }
+        { val: "abend", label: "Abends – runterkommen" },
+        { val: "immer", label: "Rund um die Uhr – durchgehend" }
       ]
     },
     {
@@ -49,6 +50,7 @@
     if (ANSWERS.moment === "abend" && p.caffeine === "none") score += 3;
     if (ANSWERS.moment === "morgen" && (p.caffeine === "high" || p.caffeine === "medium")) score += 3;
     if (ANSWERS.moment === "nachmittag" && (p.caffeine === "low" || p.caffeine === "none" || p.caffeine === "medium")) score += 2;
+    if (ANSWERS.moment === "immer" && (p.caffeine === "none" || p.caffeine === "low")) score += 2;
     if (p.persona) score += 1;
     return score;
   }
