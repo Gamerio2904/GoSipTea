@@ -770,11 +770,10 @@ button { font: inherit; cursor: pointer; }
   align-items: flex-start; gap: 12px;
 }
 .deal-card__tag {
-  padding: 6px 14px; border-radius: 999px; background: var(--accent); color: #fff;
+  padding: 6px 14px; border-radius: 999px; background: var(--brand); color: #fff;
   font-size: 0.75rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; margin: 0;
 }
 .deal-card--xmas { background: var(--brand-soft); border-color: color-mix(in srgb, var(--brand) 35%, transparent); }
-.deal-card--xmas .deal-card__tag { background: var(--brand); }
 .deal-card h3 { font-size: clamp(1.2rem, 2vw, 1.5rem); margin: 0; }
 .deal-card__price { display: flex; align-items: baseline; gap: 12px; margin: 0; }
 .deal-card__price s { color: var(--ink-faint); font-size: 1.05rem; }
@@ -801,8 +800,8 @@ button { font: inherit; cursor: pointer; }
   border-radius: 10px; background: var(--surface); border: 1.5px dashed var(--line-strong);
   font-family: var(--font-display); font-size: 1.15rem; color: var(--ink-faint); font-style: normal;
 }
-.doors i:last-child { background: var(--brand); border-style: solid; color: #fff; }
-[data-theme="dark"] .doors i:last-child { color: #1d231e; }
+.doors i:first-child { background: var(--brand); border-style: solid; color: #fff; }
+[data-theme="dark"] .doors i:first-child { color: #1d231e; }
 .doors-caption { text-align: center; font-size: 0.8rem; color: var(--ink-faint); margin-top: 14px; }
 
 /* ---------- 28. Toast ------------------------------------------------------------------------------------- */

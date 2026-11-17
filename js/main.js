@@ -159,7 +159,7 @@
         if (ok && input && input.value.trim()) {
           form.hidden = true;
           ok.hidden = false;
-          if (window.GSTUI) GSTUI.toast("Danke! (Demo – es werden keine Daten übermittelt.)");
+          if (window.GSTUI) GSTUI.toast("Danke für dein Interesse!");
         }
       });
     });

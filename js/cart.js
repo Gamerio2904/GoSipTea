@@ -131,8 +131,8 @@
     var shipEl = document.getElementById("cart-shipping-note");
     if (shipEl) {
       shipEl.textContent = subtotal() === 0
-        ? "Beispiel-Versand: kostenlos ab 30 €."
-        : (shipping() === 0 ? "Beispiel-Versand: kostenlos." : "Beispiel-Versand: " + eur(shipping()) + " – kostenlos ab 30 €.");
+        ? "Versand: kostenlos ab 30 €."
+        : (shipping() === 0 ? "Versand: kostenlos." : "Versand: " + eur(shipping()) + ", kostenlos ab 30 €.");
     }
     var totalEl = document.getElementById("cart-total");
     if (totalEl) totalEl.textContent = eur(subtotal() + shipping());

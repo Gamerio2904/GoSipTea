@@ -50,7 +50,7 @@
       '<div class="p-card__foot">' +
       '<span class="p-card__price">' + GOSIP.eur(p.price) + "<small>" + p.size + "</small></span>" +
       '<div class="p-card__actions">' +
-      '<button type="button" class="p-card__add" data-add="' + p.id + '" aria-label="' + p.name + ' in den Warenkorb legen (Demo)">' + ICON_PLUS + "</button>" +
+      '<button type="button" class="p-card__add" data-add="' + p.id + '" aria-label="' + p.name + ' in den Warenkorb legen">' + ICON_PLUS + "</button>" +
       '<a class="btn btn--sm ' + (opts.ghostBtn ? "btn--ghost" : "btn--primary") + '" href="' + href + '">Mehr erfahren</a>' +
       "</div></div></div></article>"
     );
@@ -109,6 +109,8 @@
     var bar = document.getElementById("filterbar");
     if (!bar) return;
     var params = new URLSearchParams(location.search);
+    /* Voreingestellte Kategorie (Kategorieseiten fruechtetee/schwarztee) */
+    if (!params.get("cat") && window.GST_PRESET_CAT) state.cat = window.GST_PRESET_CAT;
     if (params.get("cat")) state.cat = params.get("cat");
     if (params.get("geschmack")) state.tastes = [params.get("geschmack")];
     if (params.get("intensitaet")) state.intensity = params.get("intensitaet");
@@ -153,9 +155,9 @@
     var reset = document.getElementById("filter-reset");
     if (reset) {
       reset.addEventListener("click", function () {
-        state = { cat: "", tastes: [], intensity: "", price: "", q: "" };
+        state = { cat: window.GST_PRESET_CAT || "", tastes: [], intensity: "", price: "", q: "" };
         bar.querySelectorAll(".chip").forEach(function (c) { c.classList.remove("is-active"); });
-        var i0 = document.getElementById("filter-cat"); if (i0) i0.value = "";
+        var i0 = document.getElementById("filter-cat"); if (i0) i0.value = state.cat;
         var i1 = document.getElementById("filter-intensity"); if (i1) i1.value = "";
         var i2 = document.getElementById("filter-price"); if (i2) i2.value = "";
         var i3 = document.getElementById("filter-search"); if (i3) i3.value = "";
@@ -190,7 +192,7 @@
     document.title = p.name + " | GoSipTea – Tee, der verbindet";
     var cat = GOSIP.catById(p.cat);
     var meta = document.querySelector('meta[name="description"]');
-    if (meta) meta.setAttribute("content", p.name + " – " + p.notes + ". " + p.size + " für " + GOSIP.eur(p.price) + ". Jetzt bei GoSipTea entdecken (Demo-Shop).");
+    if (meta) meta.setAttribute("content", p.name + " – " + p.notes + ". " + p.size + " für " + GOSIP.eur(p.price) + ". Jetzt bei GoSipTea entdecken.");
 
     /* Breadcrumb */
     var bc = document.getElementById("breadcrumb");
@@ -240,7 +242,15 @@
 
     /* Specs */
     document.getElementById("spec-intensity").textContent = GOSIP.intensityLabel(p.intensity);
-    document.getElementById("spec-caffeine").textContent = GOSIP.caffeineLabel(p.caffeine);
+    var caffeCard = document.getElementById("spec-caffeine");
+    if (caffeCard) {
+      if (p.caffeine) {
+        caffeCard.textContent = GOSIP.caffeineLabel(p.caffeine);
+        caffeCard.closest(".spec-card").hidden = false;
+      } else {
+        caffeCard.closest(".spec-card").hidden = true;
+      }
+    }
     document.getElementById("spec-cat").textContent = cat ? cat.name : "";
 
     /* Intensität im Spec: Dots */
@@ -260,12 +270,8 @@
       "</div>";
     document.getElementById("acc-origin").innerHTML =
       "<ul><li><strong>Herkunft:</strong> " + p.origin + "</li>" +
-      '<li><strong>Qualitätsanspruch:</strong> Natürliche Zutaten, schonende Verarbeitung und transparente Angaben – nachvollziehbar aufbereitet in unserem Atelier.</li>' +
-      '<li><strong>Verpackung:</strong> Aromasicherer, wiederverschließbarer Beutel, plastikfrei (Beispieldaten).</li></ul>';
-    document.getElementById("acc-shipping").innerHTML =
-      "<ul><li><strong>Demo-Hinweis:</strong> Dieses Projekt ist ein studentischer Demonstrationsshop – Bestellungen und Zahlungen sind nicht möglich.</li>" +
-      "<li><strong>Beispiel-Versand:</strong> 4,90 €, ab 30 € kostenfrei (Beispieldaten).</li>" +
-      "<li><strong>Keine Zahlungsdaten:</strong> Wir fragen und speichern keine Zahlungsdaten ab.</li></ul>";
+      '<li><strong>Qualitätsanspruch:</strong> Natürliche Zutaten, schonende Verarbeitung und transparente Angaben, nachvollziehbar aufbereitet in unserem Atelier.</li>' +
+      '<li><strong>Verpackung:</strong> Aromasicherer, wiederverschließbarer Beutel, plastikfrei.</li></ul>';
 
     /* Ähnliche Produkte */
     var rel = document.getElementById("related-grid");
@@ -337,10 +343,10 @@
       btn.addEventListener("click", function () {
         if (msg) {
           msg.hidden = false;
-          msg.innerHTML = "<strong>Demo-Checkout bestätigt – kein Kauf getätigt.</strong><br>Dies ist ein studentisches Demonstrationsprojekt. Es wurde keine Bestellung übermittelt, kein Vertrag geschlossen und keine Zahlungsdaten abgefragt oder gespeichert.";
+          msg.innerHTML = "<strong>Bestellvorgang beendet.</strong><br>GoSipTea ist ein studentisches Projekt der Hochschule Heilbronn. In dieser Projektversion ist kein Bestell- und Bezahlprozess vorgesehen. Es wurden keine Daten übermittelt und keine Zahlungsdaten abgefragt.";
           msg.scrollIntoView({ behavior: "smooth", block: "center" });
         }
-        if (window.GSTUI) GSTUI.toast("Demo-Checkout: Es findet kein echter Kauf statt.");
+        if (window.GSTUI) GSTUI.toast("Vielen Dank für dein Interesse an GoSipTea!");
       });
     }
     var clearBtn = document.getElementById("cart-clear");
