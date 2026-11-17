@@ -4,7 +4,7 @@
    Warenkorb und Tea-Finder.
    Hinweis: Studentisches Projekt der Hochschule Heilbronn — Preise, Produkte und
    Zertifizierungen sind ohne realen Anspruch.
-   Preissystem: studentenfreundlich, Tees ab 4,50 €.
+   Preissystem: zugänglich, Tees ab 4,50 €.
    ========================================================================== */
 
 const GOSIP = {
