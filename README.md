@@ -15,8 +15,8 @@ Die Website zeigt einen vollständigen Markenauftritt inklusive Shop-Ansicht —
 
 | Seite | Datei | Inhalt |
 | --- | --- | --- |
-| Startseite | `index.html` | Hero, 8 Kategorien (gleich groß), Bestseller, Aktionen (Weihnachtsdeal + 20 % Aktionsrabatt), Tee-Finder, Philosophie, Werte, Instagram, Newsletter |
-| Sortiment | `sortiment.html` | 20 Tees, Dropdown-Filter (Kategorie, Geschmack, Intensität, Preis, Suche) |
+| Startseite | `index.html` | Hero, 9 Kategorien (gleich groß), Bestseller, Aktionen (Weihnachtsdeal + 20 % Aktionsrabatt), Tee-Finder, Philosophie, Werte, Instagram, Newsletter |
+| Sortiment | `sortiment.html` | 24 Tees inkl. TeeBomben (USP), Dropdown-Filter (Kategorie, Geschmack, Intensität, Preis, Suche) |
 | Früchtetee | `fruechtetee.html` | Kategorieseite im Sortiment-Layout (Filter + Karten, Empfehlung: Berry Balance) |
 | Schwarztee | `schwarztee.html` | Kategorieseite im Sortiment-Layout (Filter + Karten, Empfehlung: Golden Harmony) |
 | Produktdetails | `produkt.html?id=…` | Bildwechsel (2 Ansichten), Zutaten, Zubereitung, Herkunft, ähnliche Produkte |
@@ -63,7 +63,7 @@ Matcha 12,90 €) und Sets (Festtags-Paket 19,90 € mit 4 × 10 g, Winter-Tee-S
   Light/Dark-Theme via `data-theme`, dezente Scroll-Reveals, `prefers-reduced-motion`)
 - Einheitliches Logo (SVG-Badge mit Tasse + „GoSipTea“/„SIP & TALK“, identisch
   in Header, Footer & Favicon `assets/img/favicon.svg`)
-- Produktdaten: `js/products.js` (20 Produkte, 8 Kategorien inkl. **Specials**, deutsch)
+- Produktdaten: `js/products.js` (24 Produkte, 9 Kategorien inkl. **Specials** und **TeeBomben**, deutsch)
 - Warenkorb: `js/cart.js` — ausschließlich `localStorage` (`gst_cart_v2`), keine Übertragung
 - Tee-Finder: `js/tea-finder.js` — 3 Fragen (inkl. Moment „rund um die Uhr“) → passende Tees
 - SEO: Meta/OG/Twitter-Tags, JSON-LD (Organization, WebSite, Product, FAQPage,

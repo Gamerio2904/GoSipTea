@@ -324,6 +324,7 @@ img.logo__mark { width: 40px; height: 40px; border-radius: 50%; object-fit: cove
 /* ---------- 9. Kategorie-Karten (alle exakt gleich groß) ------------------------ */
 .cat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .cat-grid--8 { grid-template-columns: repeat(4, 1fr); }
+.cat-grid--9 { grid-template-columns: repeat(3, 1fr); }
 .cat-card {
   position: relative; border-radius: var(--radius-l); overflow: hidden; aspect-ratio: 4 / 5;
   box-shadow: var(--shadow-s); isolation: isolate;
@@ -343,8 +344,8 @@ img.logo__mark { width: 40px; height: 40px; border-radius: 50%; object-fit: cove
   opacity: 0; transform: translateY(8px); transition: opacity 0.3s var(--ease), transform 0.3s var(--ease);
 }
 .cat-card:hover .cat-card__more { opacity: 1; transform: none; }
-@media (max-width: 1020px) { .cat-grid, .cat-grid--8 { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 560px) { .cat-grid, .cat-grid--8 { grid-template-columns: 1fr 1fr; } .cat-card { aspect-ratio: 3.5/4.4; } }
+@media (max-width: 1020px) { .cat-grid, .cat-grid--8, .cat-grid--9 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .cat-grid, .cat-grid--8, .cat-grid--9 { grid-template-columns: 1fr 1fr; } .cat-card { aspect-ratio: 3.5/4.4; } }
 
 /* ---------- 10. Produktkarten (einheitlich!) ------------------------------------ */
 .p-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }

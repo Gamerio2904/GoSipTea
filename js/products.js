@@ -83,6 +83,15 @@ const GOSIP = {
       img: "assets/img/new/geschenkset.jpg",
       img2: "assets/img/xmas/festtags-probierpaket.jpg",
       landing: ""
+    },
+    {
+      id: "teebomben",
+      name: "TeeBomben",
+      tagline: "Unsere USP: Tee in der Zuckerhülle",
+      desc: "Die TeeBombe ist unser Marken-USP: Tee- oder Getränkepulver in einer Hülle aus gepresstem Bio-Zucker. In heißem Wasser aufgelöst entsteht eine volle Tasse – ganz ohne Löffeln und ohne zusätzliche Süße.",
+      img: "assets/img/teabomben/chai-latte-offen.jpg",
+      img2: "assets/img/teabomben/matcha.jpg",
+      landing: ""
     }
   ],
 
@@ -502,6 +511,88 @@ const GOSIP = {
       badge: null,
       img: "assets/img/xmas/winter-tee-set.jpg",
       img2: "assets/img/teas2/winter-tee-set.jpg"
+    },
+
+    /* --- TeeBomben (USP) ---------------------------------------------- */
+    {
+      id: "teebombe-chai-latte",
+      name: "TeeBombe Chai Latte",
+      cat: "teebomben",
+      price: 4.9,
+      size: "2 Bomben (je ca. 40 g) · 2 große Tassen",
+      caffeine: "medium",
+      intensity: 2,
+      tastes: ["würzig", "mild"],
+      notes: "Zimt, Kardamom, weiche Milchwärme, feiner Chai-Abgang",
+      desc: "Chai Latte ohne Löffel, ohne Waage, ohne zusätzlichen Zucker. Die Hülle aus gepresstem Bio-Zucker umschließt das komplette Chai-Latte-Pulver und löst sich in der heißen Tasse in zwei bis drei Minuten auf, während würziger Chai mit weicher Milchwärme frei wird. Gewürze verteilen sich gleichmäßig, Klümpchenrühren entfällt, und die Süße kommt ausschließlich aus der Hülle. Handgefertigt in kleiner Auflage und plastikfrei in der Kartonverpackung ist die TeeBombe unser Marken-USP und der schnellste Weg zu einer vollen Tasse Chai.",
+      ingredients: ["Hülle aus gepresstem Bio-Zucker", "Chai-Latte-Pulver (Schwarztee-Extrakt, Milchpulver, Zimt, Kardamom, Ingwer)"],
+      brew: { temp: "85–90 °C", time: "2–3 Min. auflösen", amount: "1 Bombe pro großer Tasse (ca. 400 ml)" },
+      origin: "Handgefertigt in kleiner Auflage · Konzept aus dem GoSipTea Atelier",
+      cert: ["Hülle aus Bio-Zucker", "Handgefertigt", "Plastikfreie Kartonverpackung"],
+      persona: null,
+      badge: "Neu",
+      img: "assets/img/teabomben/chai-latte.jpg",
+      img2: "assets/img/teabomben/chai-latte-offen.jpg"
+    },
+    {
+      id: "teebombe-matcha",
+      name: "TeeBombe Matcha",
+      cat: "teebomben",
+      price: 5.2,
+      size: "2 Bomben (je ca. 40 g) · 2 große Tassen",
+      caffeine: "high",
+      intensity: 3,
+      tastes: ["kräuterig", "mild"],
+      notes: "Umami, frisch grasig, hellgrüner Schaum, sanfte Süße",
+      desc: "Die ganze Matcha-Zeremonie in einer Hülle. Statt Sieb und Bambusbesen einfach die TeeBombe in heißes Wasser legen: Die Zuckerhülle löst sich auf, das fein vermahlene Matcha-Pulver verteilt sich gleichmäßig und gibt einen hellgrünen Becher mit umami-frischer Tiefe. Keine zusätzlichen Süßungsmittel, keine Klümpchen – die Süße übernimmt die Hülle aus Bio-Zucker. Handgefertigt und plastikfrei im Karton verpackt, bringt die Bombe den Matcha-Moment überall dorthin, wo eine Tasse Wasser steht.",
+      ingredients: ["Hülle aus gepresstem Bio-Zucker", "Matcha-Pulver (Gemüse- und Premium-Matcha)"],
+      brew: { temp: "80 °C", time: "2–3 Min. auflösen", amount: "1 Bombe pro großer Tasse (ca. 400 ml)" },
+      origin: "Handgefertigt in kleiner Auflage · Konzept aus dem GoSipTea Atelier",
+      cert: ["Hülle aus Bio-Zucker", "Handgefertigt", "Plastikfreie Kartonverpackung"],
+      persona: null,
+      badge: "Neu",
+      img: "assets/img/teabomben/matcha.jpg",
+      img2: "assets/img/teabomben/matcha-protein.jpg"
+    },
+    {
+      id: "teebombe-chai-latte-protein",
+      name: "TeeBombe Chai Latte Protein",
+      cat: "teebomben",
+      price: 5.5,
+      size: "2 Bomben (je ca. 45 g) · 2 große Tassen",
+      caffeine: "medium",
+      intensity: 2,
+      tastes: ["würzig", "mild"],
+      notes: "Chai-Würze, cremige Milch, hauch Vanille, Protein-Fülle",
+      desc: "Chai Latte und Proteinshake in einem. Die TeeBombe vereint das würzige Chai-Latte-Pulver mit pflanzlichem Erbsenprotein in einer Hülle aus Bio-Zucker; im heißen Wasser aufgelöst entsteht eine cremige, würzige Tasse mit spürbarer Proteinfülle. Kein Shaker, kein Klumpen, keine zusätzliche Süße nötig. Für die Runde nach dem Workout, das späte Frühstück oder jeden Moment, in dem Genuss und Ernährung zusammenkommen sollen.",
+      ingredients: ["Hülle aus gepresstem Bio-Zucker", "Chai-Latte-Pulver (Schwarztee-Extrakt, Milchpulver, Zimt, Kardamom)", "pflanzliches Erbsenprotein"],
+      brew: { temp: "85–90 °C", time: "2–3 Min. auflösen, zwischendurch umrühren", amount: "1 Bombe pro großer Tasse (ca. 400 ml)" },
+      origin: "Handgefertigt in kleiner Auflage · Konzept aus dem GoSipTea Atelier",
+      cert: ["Hülle aus Bio-Zucker", "Handgefertigt", "Plastikfreie Kartonverpackung"],
+      persona: null,
+      badge: "Neu",
+      img: "assets/img/teabomben/chai-latte-protein.jpg",
+      img2: "assets/img/teabomben/chai-latte-offen.jpg"
+    },
+    {
+      id: "teebombe-matcha-protein",
+      name: "TeeBombe Matcha Protein",
+      cat: "teebomben",
+      price: 5.8,
+      size: "2 Bomben (je ca. 45 g) · 2 große Tassen",
+      caffeine: "high",
+      intensity: 3,
+      tastes: ["kräuterig", "mild"],
+      notes: "Umami-Matcha, cremiger Schaum, grüne Frische, Proteinfülle",
+      desc: "Matcha trifft Protein, ganz ohne Pulverspektakel. In der Hülle aus gepresstem Bio-Zucker liegen feines Matcha und pflanzliches Erbsenprotein; die Bombe löst sich im heißen Wasser auf und schenkt einen cremig-grünen Becher mit umami-frischem Charakter. Kein Besen, kein Shaker, keine Zusatzsüße – die Süße kommt allein aus der Hülle. Die kompakte Antwort auf die Frage, was nach dem Training, im Büro oder auf Reisen gerade in die Tasse darf.",
+      ingredients: ["Hülle aus gepresstem Bio-Zucker", "Matcha-Pulver", "pflanzliches Erbsenprotein"],
+      brew: { temp: "80 °C", time: "2–3 Min. auflösen, zwischendurch umrühren", amount: "1 Bombe pro großer Tasse (ca. 400 ml)" },
+      origin: "Handgefertigt in kleiner Auflage · Konzept aus dem GoSipTea Atelier",
+      cert: ["Hülle aus Bio-Zucker", "Handgefertigt", "Plastikfreie Kartonverpackung"],
+      persona: null,
+      badge: "Neu",
+      img: "assets/img/teabomben/matcha-protein.jpg",
+      img2: "assets/img/teabomben/matcha.jpg"
     }
   ]
 };
